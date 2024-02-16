@@ -1,5 +1,5 @@
-#ifndef COMMINTERFACE_H
-#define COMMINTERFACE_H
+#ifndef COMMINTERFACE_HPP
+#define COMMINTERFACE_HPP
 
 #include <array>
 #include <cstddef>
@@ -21,4 +21,4 @@ private:
     CommInterface& operator=(const CommInterface&) = delete;
 };
 
-#endif // COMMINTERFACE_H
+#endif // COMMINTERFACE_HPP
