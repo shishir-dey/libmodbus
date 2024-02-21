@@ -9,7 +9,7 @@ void ModbusFrame::deserialize(const std::array<uint8_t, 256>& data)
 {
 }
 
-std::array<uint8_t, 256> ModbusRTUFrame::serialize()
+std::array<uint8_t, 256> ModbusRtuFrame::serialize()
 {
     std::array<uint8_t, 256> data {};
     size_t dataIndex = 0;
@@ -27,7 +27,7 @@ std::array<uint8_t, 256> ModbusRTUFrame::serialize()
 
     return data;
 }
-void ModbusRTUFrame::deserialize(const std::array<uint8_t, 256>& data)
+void ModbusRtuFrame::deserialize(const std::array<uint8_t, 256>& data)
 {
     size_t dataIndex = 0;
 

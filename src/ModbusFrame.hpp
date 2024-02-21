@@ -15,7 +15,7 @@ public:
     virtual void deserialize(const std::array<uint8_t, 256>& data) = 0;
 };
 
-class ModbusRTUFrame : public ModbusFrame {
+class ModbusRtuFrame : public ModbusFrame {
 public:
     uint8_t slaveaddr;
     uint16_t checksum;
@@ -79,7 +79,7 @@ public:
     {
         switch (type) {
         case FrameType::RTU:
-            return std::make_unique<ModbusRTUFrame>();
+            return std::make_unique<ModbusRtuFrame>();
         case FrameType::ASCII:
             return std::make_unique<ModbusAsciiFrame>();
         case FrameType::TCPIP:
