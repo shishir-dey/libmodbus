@@ -8,14 +8,14 @@ std::array<uint8_t, 256> ModbusRtuServer::handleRequest(const std::array<uint8_t
     ModbusRtuRequestFrame request;
     request.deserialize(requestData);
 
-    if (auto* requestRtuFrame = std::get_if<ModbusRtuFrame>(&request.pdu); requestRtuFrame != nullptr) {
-        if (commands.find(requestRtuFrame->functionCode) != commands.end()) {
-            ModbusPDU resPdu = commands[requestRtuFrame->functionCode]->execute(data, request);
-            ModbusRtuResponseFrame rtuRes;
-            rtuRes.pdu = resPdu;
-            return rtuRes.serialize();
-        } else {
-            /* Handle invalid command */
-        }
-    }
+    // if (auto* requestRtuFrame = std::get_if<ModbusRtuFrame>(&request); requestRtuFrame != nullptr) {
+    //     if (commands.find(requestRtuFrame->pdu.functionCode) != commands.end()) {
+    //         ModbusPDU resPdu = commands[requestRtuFrame->functionCode]->execute(data, request);
+    //         ModbusRtuResponseFrame rtuRes;
+    //         rtuRes.pdu = resPdu;
+    //         return rtuRes.serialize();
+    //     } else {
+    //         /* Handle invalid command */
+    //     }
+    // }
 }
