@@ -6,7 +6,6 @@ unsigned char Checksum::calculateLRC(const unsigned char* pucFrame, unsigned sho
     while (usLen--) {
         ucLRC += *pucFrame++;
     }
-    // Return twos complement
     return (unsigned char)-((char)ucLRC);
 }
 

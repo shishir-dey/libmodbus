@@ -5,48 +5,48 @@
 #include <array>
 #include <cstdint>
 #include <memory>
+#include <variant>
 
 class ModbusFrame {
 public:
     ModbusFunctionCode functionCode;
     std::array<uint8_t, 256> frameData;
+};
 
-    virtual std::array<uint8_t, 256> serialize() = 0;
-    virtual void deserialize(const std::array<uint8_t, 256>& data) = 0;
+class ModbusExceptionFrame {
+public:
+    ModbusFunctionCode exceptionfunctionCode;
+    ModbusExceptionCode exceptionFunctionCode;
 };
 
 using ModbusRequestFrame = ModbusFrame;
 using ModbusResponseFrame = ModbusFrame;
 
-class ModbusExceptionFrame : public ModbusFrame {
+using ModbusPDU = std::variant<ModbusResponseFrame, ModbusExceptionFrame>;
+
+class ModbusRtuFrame {
 public:
+    ModbusPDU pdu;
     uint8_t slaveaddr;
-    ModbusFunctionCode exceptionFunctionCode;
-    ModbusExceptionCode exceptionCode;
     uint16_t checksum;
 
     std::array<uint8_t, 256> serialize();
     void deserialize(const std::array<uint8_t, 256>& data);
 };
 
-class ModbusRtuFrame : public ModbusFrame {
-public:
-    uint8_t slaveaddr;
-    uint16_t checksum;
+using ModbusRtuRequestFrame = ModbusRtuFrame;
+using ModbusRtuResponseFrame = ModbusRtuFrame;
 
-    std::array<uint8_t, 256> serialize() override;
-    void deserialize(const std::array<uint8_t, 256>& data) override;
-};
-
-class ModbusAsciiFrame : public ModbusFrame {
+class ModbusAsciiFrame {
 public:
+    ModbusPDU pdu;
     uint8_t start;
     uint8_t address;
     uint16_t checksum;
     uint8_t end;
 
-    std::array<uint8_t, 256> serialize() override;
-    void deserialize(const std::array<uint8_t, 256>& data) override;
+    std::array<uint8_t, 256> serialize();
+    void deserialize(const std::array<uint8_t, 256>& data);
 };
 
 class MbapHeader {
@@ -73,33 +73,13 @@ public:
     }
 };
 
-class ModbusTcpFrame : public ModbusFrame {
+class ModbusTcpFrame {
 public:
+    ModbusPDU pdu;
     MbapHeader mbapHeader;
 
-    std::array<uint8_t, 256> serialize() override;
-    void deserialize(const std::array<uint8_t, 256>& data) override;
-};
-
-class ModbusFrameFactory {
-public:
-    enum class FrameType {
-        RTU,
-        ASCII,
-        TCPIP
-    };
-
-    static std::unique_ptr<ModbusFrame> createFrame(FrameType type)
-    {
-        switch (type) {
-        case FrameType::RTU:
-            return std::make_unique<ModbusRtuFrame>();
-        case FrameType::ASCII:
-            return std::make_unique<ModbusAsciiFrame>();
-        case FrameType::TCPIP:
-            return std::make_unique<ModbusTcpFrame>();
-        }
-    }
+    std::array<uint8_t, 256> serialize();
+    void deserialize(const std::array<uint8_t, 256>& data);
 };
 
 #endif

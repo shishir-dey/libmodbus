@@ -1,3 +1,6 @@
+#ifndef MODBUSDATAMODEL_HPP
+#define MODBUSDATAMODEL_HPP
+
 #include <array>
 #include <cstdint>
 #include <stddef.h>
@@ -8,13 +11,12 @@ using InputRegisterType = uint16_t;
 using HoldingRegisterType = uint16_t;
 
 class ModbusDataModel {
-private:
-    static constexpr size_t MAX_DISCREET_INPUT = 5;
-    static constexpr size_t MAX_COILS = 5;
-    static constexpr size_t MAX_INPUT_REGISTERS = 5;
-    static constexpr size_t MAX_HOLDING_REGISTERS = 5;
-
 public:
+    static constexpr size_t MAX_DISCREET_INPUT = 8;
+    static constexpr size_t MAX_COILS = 8;
+    static constexpr size_t MAX_INPUT_REGISTERS = 8;
+    static constexpr size_t MAX_HOLDING_REGISTERS = 8;
+
     std::array<DiscreteInputType, MAX_DISCREET_INPUT> discreteInputs;
     std::array<CoilType, MAX_COILS> coils;
     std::array<InputRegisterType, MAX_INPUT_REGISTERS> inputRegisters;
@@ -36,3 +38,5 @@ public:
 
     void writeMultipleHoldingRegisters(uint8_t start_index, const HoldingRegisterType values[], size_t num_values);
 };
+
+#endif
