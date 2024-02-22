@@ -16,7 +16,7 @@ public:
 class ModbusExceptionFrame {
 public:
     ModbusFunctionCode exceptionfunctionCode;
-    ModbusExceptionCode exceptionFunctionCode;
+    ModbusExceptionCode exceptionCode;
 };
 
 using ModbusRequestFrame = ModbusFrame;
