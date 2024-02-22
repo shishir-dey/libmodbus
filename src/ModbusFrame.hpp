@@ -18,6 +18,17 @@ public:
 using ModbusRequestFrame = ModbusFrame;
 using ModbusResponseFrame = ModbusFrame;
 
+class ModbusExceptionFrame : public ModbusFrame {
+public:
+    uint8_t slaveaddr;
+    ModbusFunctionCode exceptionFunctionCode;
+    ModbusExceptionCode exceptionCode;
+    uint16_t checksum;
+
+    std::array<uint8_t, 256> serialize();
+    void deserialize(const std::array<uint8_t, 256>& data);
+};
+
 class ModbusRtuFrame : public ModbusFrame {
 public:
     uint8_t slaveaddr;
