@@ -7,7 +7,7 @@ std::array<uint8_t, 256> ModbusRtuFrame::serialize()
     size_t dataIndex = 0;
 
     data[dataIndex++] = slaveaddr;
-    if (auto* responseFrame = std::get_if<ModbusResponseFrame>(&frame); responseFrame != nullptr) {
+    if (auto* responseFrame = std::get_if<ModbusResponseFrame>(&pdu); responseFrame != nullptr) {
         data[dataIndex++] = static_cast<uint8_t>(responseFrame->functionCode);
 
         std::copy(responseFrame->frameData.begin(), responseFrame->frameData.end(), data.begin() + dataIndex);
@@ -26,7 +26,7 @@ void ModbusRtuFrame::deserialize(const std::array<uint8_t, 256>& data)
     size_t dataIndex = 0;
 
     slaveaddr = data[dataIndex++];
-    if (auto* responseFrame = std::get_if<ModbusResponseFrame>(&frame); responseFrame != nullptr) {
+    if (auto* responseFrame = std::get_if<ModbusResponseFrame>(&pdu); responseFrame != nullptr) {
         responseFrame->functionCode = static_cast<ModbusFunctionCode>(data[dataIndex++]);
 
         size_t frameDataSize = data.size() - dataIndex - 2;
