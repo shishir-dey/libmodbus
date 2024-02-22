@@ -15,6 +15,9 @@ public:
     virtual void deserialize(const std::array<uint8_t, 256>& data) = 0;
 };
 
+using ModbusRequestFrame = ModbusFrame;
+using ModbusResponseFrame = ModbusFrame;
+
 class ModbusRtuFrame : public ModbusFrame {
 public:
     uint8_t slaveaddr;
