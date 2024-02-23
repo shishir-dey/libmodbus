@@ -27,7 +27,7 @@ std::array<uint8_t, 256> ModbusRtuFrame::serialize()
     }
     case 1: /* ModbusExceptionFrame */
     {
-        ModbusExceptionFrame* exceptionFrame = std::get_if<ModbusExceptionFrame>(&responseVariant);
+        // ModbusExceptionFrame* exceptionFrame = std::get_if<ModbusExceptionFrame>(&responseVariant);
         break;
     }
     }
@@ -39,25 +39,15 @@ void ModbusRtuFrame::deserialize(const std::array<uint8_t, 256>& data)
     /* assume incoming data is a valid request/response frame */
     slaveaddr = data[0];
 
-    // uint16_t receivedChecksum = data[dataIndex - 2] | (data[dataIndex - 1] << 8);
-    // uint16_t calculatedChecksum = Checksum::calculateCRC16(data.data(), dataIndex - 2);
-
-    // if (receivedChecksum == calculatedChecksum) {
-    //     ModbusRequestFrame requestFrame;
-    //     requestFrame.functionCode = static_cast<ModbusFunctionCode>(data[1]);
-    //     for (size_t i = 2; i < dataIndex - 2; ++i) {
-    //         requestFrame.frameData[i - 2] = data[i];
-    //     }
-    //     pdu = requestFrame;
-    // }
-
-    /* checksum is disabled */
     ModbusRequestFrame requestFrame;
     requestFrame.functionCode = static_cast<ModbusFunctionCode>(data[1]);
-    for (size_t i = 2; i < dataIndex - 2; ++i) {
+    for (size_t i = 2; i < data.size() - 2; ++i) {
         requestFrame.frameData[i - 2] = data[i];
     }
     pdu = requestFrame;
+    checksum = (data[data.size() - 2 - 1] << 8) | data[data.size() - 1 - 1];
+
+    /* verify checksum */
 }
 
 std::array<uint8_t, 256> ModbusAsciiFrame::serialize()
