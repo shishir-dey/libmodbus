@@ -7,21 +7,19 @@ protected:
 
     void SetUp() override
     {
-        // Setup code for Modbus object if needed
     }
 
     void TearDown() override
     {
-        // Cleanup code for Modbus object if needed
     }
 };
 
 TEST_F(ModbusDataModelTest, WriteAndReadCoil)
 {
-    uint8_t testIndex = 2; // Choose an index within the valid range
-    CoilType originalValue = true; // Set an initial value for the coil
-    modbusDataModel.writeCoil(testIndex, originalValue); // Write the initial value to the coil
+    uint8_t testIndex = 2;
+    CoilType originalValue = true;
+    modbusDataModel.writeCoil(testIndex, originalValue);
 
-    CoilType readValue = modbusDataModel.readCoil(testIndex); // Read the value back from the coil
-    EXPECT_EQ(originalValue, readValue); // Compare the written value with the read value
+    CoilType readValue = modbusDataModel.readCoil(testIndex);
+    EXPECT_EQ(originalValue, readValue);
 }

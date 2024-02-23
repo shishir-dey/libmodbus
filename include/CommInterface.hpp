@@ -21,4 +21,4 @@ private:
     CommInterface& operator=(const CommInterface&) = delete;
 };
 
-#endif // COMMINTERFACE_HPP
+#endif
