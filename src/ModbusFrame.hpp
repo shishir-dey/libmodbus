@@ -9,12 +9,18 @@
 
 class ModbusFrame {
 public:
+    // -----------------------------------------------
+    // | Function code (1 byte) | Data (n bytes)  |
+    // -----------------------------------------------
     ModbusFunctionCode functionCode;
     std::array<uint8_t, 256> frameData;
 };
 
 class ModbusExceptionFrame {
 public:
+    // ------------------------------------------------
+    // | Function code (1 byte) | Exception code (1 byte) |
+    // ------------------------------------------------
     ModbusFunctionCode exceptionfunctionCode;
     ModbusExceptionCode exceptionCode;
 };
@@ -26,8 +32,15 @@ using ModbusPDU = std::variant<ModbusResponseFrame, ModbusExceptionFrame>;
 
 class ModbusRtuFrame {
 public:
-    ModbusPDU pdu;
+    // --------------------------------------------------------
+    // | Slave address (1 byte) | Function code (1 byte) | Data (n bytes) | CRC check (2 bytes) |
+    // --------------------------------------------------------
+    // or
+    // --------------------------------------------------------
+    // | Slave address (1 byte) | Function code (1 byte) | Exception code (1 byte) | CRC check (2 bytes) |
+    // --------------------------------------------------------
     uint8_t slaveaddr;
+    ModbusPDU pdu;
     uint16_t checksum;
 
     std::array<uint8_t, 256> serialize();
@@ -39,11 +52,14 @@ using ModbusRtuResponseFrame = ModbusRtuFrame;
 
 class ModbusAsciiFrame {
 public:
-    ModbusPDU pdu;
+    // -------------------------------------------------------------------------------------------
+    // | Start (1 character) | Slave address (2 characters) | Function code (2 characters) | Data (multiple characters) | LRC check (2 characters) | End (2 characters) |
+    // -------------------------------------------------------------------------------------------
     uint8_t start;
     uint8_t address;
+    ModbusPDU pdu;
     uint16_t checksum;
-    uint8_t end;
+    uint16_t end;
 
     std::array<uint8_t, 256> serialize();
     void deserialize(const std::array<uint8_t, 256>& data);
@@ -75,8 +91,8 @@ public:
 
 class ModbusTcpFrame {
 public:
-    ModbusPDU pdu;
     MbapHeader mbapHeader;
+    ModbusPDU pdu;
 
     std::array<uint8_t, 256> serialize();
     void deserialize(const std::array<uint8_t, 256>& data);
