@@ -13,7 +13,7 @@ add_library(Modbus STATIC ${SOURCES})
 
 # Include directories for the library
 target_include_directories(Modbus PUBLIC 
-    "${PROJECT_SOURCE_DIR}/src"
+    "${PROJECT_SOURCE_DIR}/include"
 )
 
 # Enable testing
