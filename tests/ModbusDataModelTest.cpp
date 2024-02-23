@@ -1,4 +1,4 @@
-#include "../src/ModbusDataModel.hpp"
+#include "../include/ModbusDataModel.hpp"
 #include <gtest/gtest.h>
 
 class ModbusDataModelTest : public ::testing::Test {
