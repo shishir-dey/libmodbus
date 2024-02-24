@@ -4,18 +4,16 @@ cmake_minimum_required(VERSION 3.10)
 project(libmodbus VERSION 1.0 LANGUAGES CXX)
 
 # Specify the C++ standard
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Add library source files
-add_library(Modbus STATIC 
-    src/Modbus.cpp
-    src/Checksum.cpp
-)
+file(GLOB SOURCES "src/*.cpp")
+add_library(Modbus STATIC ${SOURCES})
 
 # Include directories for the library
 target_include_directories(Modbus PUBLIC 
-    "${PROJECT_SOURCE_DIR}/src"
+    "${PROJECT_SOURCE_DIR}/include"
 )
 
 # Enable testing
@@ -31,13 +29,13 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 # Add test executable
-add_executable(ModbusTest tests/ModbusTest.cpp)
+add_executable(ModbusDataModelTest tests/ModbusDataModelTest.cpp)
 
 # Include directories for Google Test
-target_include_directories(ModbusTest PRIVATE ${googletest_SOURCE_DIR}/googletest/include)
+target_include_directories(ModbusDataModelTest PRIVATE ${googletest_SOURCE_DIR}/googletest/include)
 
 # Link the test executable with Google Test
-target_link_libraries(ModbusTest PRIVATE gtest gtest_main Modbus)
+target_link_libraries(ModbusDataModelTest PRIVATE gtest gtest_main Modbus)
 
 # Register the test with ctest
-add_test(NAME ModbusTest COMMAND ModbusTest)
+add_test(NAME ModbusDataModelTest COMMAND ModbusDataModelTest)

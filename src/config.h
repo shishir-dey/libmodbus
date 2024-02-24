@@ -1,9 +1,0 @@
-#ifndef CONFIG_H
-#define CONFIG_H
-
-#define MAX_DISCREET_INPUT 5
-#define MAX_COILS 5
-#define MAX_INPUT_REGISTERS 5
-#define MAX_HOLDING_REGISTERS 5
-
-#endif
