@@ -6,37 +6,37 @@
 
 class ModbusCommand {
 public:
-    virtual ModbusPDU execute(ModbusDataModel& data, const ModbusRequestFrame& request) = 0;
+    virtual ModbusFrame execute(ModbusDataModel& data, const ModbusFrame& request) = 0;
 };
 
 class ReadCoilCommand : public ModbusCommand {
 public:
-    ModbusPDU execute(ModbusDataModel& data, const ModbusRequestFrame& request);
+    ModbusFrame execute(ModbusDataModel& data, const ModbusFrame& request);
 };
 
 class ReadDiscreteInputCommand : public ModbusCommand {
 public:
-    ModbusPDU execute(ModbusDataModel& data, const ModbusRequestFrame& request);
+    ModbusFrame execute(ModbusDataModel& data, const ModbusFrame& request);
 };
 
 class ReadInputRegisterCommand : public ModbusCommand {
 public:
-    ModbusPDU execute(ModbusDataModel& data, const ModbusRequestFrame& request);
+    ModbusFrame execute(ModbusDataModel& data, const ModbusFrame& request);
 };
 
 class ReadHoldingRegisterCommand : public ModbusCommand {
 public:
-    ModbusPDU execute(ModbusDataModel& data, const ModbusRequestFrame& request);
+    ModbusFrame execute(ModbusDataModel& data, const ModbusFrame& request);
 };
 
 class WriteCoilCommand : public ModbusCommand {
 public:
-    ModbusPDU execute(ModbusDataModel& data, const ModbusRequestFrame& request);
+    ModbusFrame execute(ModbusDataModel& data, const ModbusFrame& request);
 };
 
 class WriteHoldingRegisterCommand : public ModbusCommand {
 public:
-    ModbusPDU execute(ModbusDataModel& data, const ModbusRequestFrame& request);
+    ModbusFrame execute(ModbusDataModel& data, const ModbusFrame& request);
 };
 
 #endif

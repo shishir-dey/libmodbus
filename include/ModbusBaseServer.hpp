@@ -4,26 +4,21 @@
 #include "Modbus.hpp"
 #include "ModbusCommand.hpp"
 #include <map>
+#include <memory>
 
 class ModbusBaseServer {
 public:
     ModbusDataModel data;
-    std::map<ModbusFunctionCode, ModbusCommand*> commands;
+    std::map<ModbusFunctionCode, std::unique_ptr<ModbusCommand>> commands;
 
     ModbusBaseServer()
     {
-        commands[ModbusFunctionCode::READ_COILS] = new ReadCoilCommand();
-    }
-
-    ~ModbusBaseServer()
-    {
-        for (auto& command : commands) {
-            delete command.second;
-        }
+        commands[ModbusFunctionCode::READ_COILS] = std::make_unique<ReadCoilCommand>();
     }
 
     virtual std::array<uint8_t, 256> handleRequest(const std::array<uint8_t, 256>& requestData)
     {
+        return {};
     }
 };
 

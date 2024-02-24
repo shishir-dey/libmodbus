@@ -4,6 +4,7 @@
 #include <cstdint>
 
 enum class ModbusFunctionCode : uint8_t {
+    NONE = 0,
     READ_COILS = 1,
     READ_DISCRETE_INPUTS = 2,
     READ_HOLDING_REGISTERS = 3,
@@ -16,6 +17,7 @@ enum class ModbusFunctionCode : uint8_t {
 };
 
 enum class ModbusExceptionCode : uint8_t {
+    NONE = 0x00,
     ILLEGAL_FUNCTION = 0x01,
     ILLEGAL_DATA_ADDRESS = 0x02,
     ILLEGAL_DATA_VALUE = 0x03,

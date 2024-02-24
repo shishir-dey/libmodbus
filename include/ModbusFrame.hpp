@@ -7,28 +7,21 @@
 #include <memory>
 #include <variant>
 
+enum class ModbusFrameType {
+    NONE,
+    REQUEST,
+    RESPONSE,
+    EXCEPTION
+};
+
 class ModbusFrame {
 public:
-    // -----------------------------------------------
-    // | Function code (1 byte) | Data (n bytes)  |
-    // -----------------------------------------------
+    uint8_t validDataCount;
+    ModbusFrameType frameType;
     ModbusFunctionCode functionCode;
     std::array<uint8_t, 256> frameData;
-};
-
-class ModbusExceptionFrame {
-public:
-    // ------------------------------------------------
-    // | Function code (1 byte) | Exception code (1 byte) |
-    // ------------------------------------------------
-    ModbusFunctionCode exceptionfunctionCode;
     ModbusExceptionCode exceptionCode;
 };
-
-using ModbusRequestFrame = ModbusFrame;
-using ModbusResponseFrame = ModbusFrame;
-
-using ModbusPDU = std::variant<ModbusResponseFrame, ModbusExceptionFrame>;
 
 class ModbusRtuFrame {
 public:
@@ -40,15 +33,13 @@ public:
     // | Slave address (1 byte) | Function code (1 byte) | Exception code (1 byte) | CRC check (2 bytes) |
     // --------------------------------------------------------
     uint8_t slaveaddr;
-    ModbusPDU pdu;
+    ModbusFrame pdu;
     uint16_t checksum;
 
     std::array<uint8_t, 256> serialize();
-    void deserialize(const std::array<uint8_t, 256>& data);
+    void deserialize(ModbusFrameType frameType, const std::array<uint8_t, 256>& data);
+    void reset();
 };
-
-using ModbusRtuRequestFrame = ModbusRtuFrame;
-using ModbusRtuResponseFrame = ModbusRtuFrame;
 
 class ModbusAsciiFrame {
 public:
@@ -57,7 +48,7 @@ public:
     // -------------------------------------------------------------------------------------------
     uint8_t start;
     uint8_t address;
-    ModbusPDU pdu;
+    ModbusFrame pdu;
     uint16_t checksum;
     uint16_t end;
 
@@ -92,7 +83,7 @@ public:
 class ModbusTcpFrame {
 public:
     MbapHeader mbapHeader;
-    ModbusPDU pdu;
+    ModbusFrame pdu;
 
     std::array<uint8_t, 256> serialize();
     void deserialize(const std::array<uint8_t, 256>& data);
