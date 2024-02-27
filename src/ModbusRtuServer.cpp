@@ -3,14 +3,14 @@
 #include "ModbusCommand.hpp"
 #include "ModbusDataModel.hpp"
 
-std::array<uint8_t, 256> ModbusRtuServer::handleRequest(const std::array<uint8_t, 256>& requestData)
+std::array<uint8_t, 256> ModbusRtuServer::process(const std::array<uint8_t, 256>& requestData)
 {
-    ModbusRtuFrame rtuRequest, rtuResponse;
+    ModbusRtuFrame request, response;
 
-    rtuRequest.deserialize(ModbusFrameType::REQUEST, requestData);
-    rtuResponse.slaveaddr = rtuRequest.slaveaddr;
-    rtuResponse.pdu = commands[rtuRequest.pdu.functionCode]->execute(data, rtuRequest.pdu);
-    rtuResponse.checksum = 0;
+    request.deserialize(ModbusFrameType::REQUEST, requestData);
+    response.slaveaddr = request.slaveaddr;
+    response.pdu = commands[request.pdu.functionCode]->execute(data, request.pdu);
+    response.checksum = 0;
 
-    return rtuResponse.serialize();
+    return response.serialize();
 }
