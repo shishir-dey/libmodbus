@@ -4,6 +4,33 @@ ModbusFrame ModbusCommand::execute(ModbusDataModel& data, const ModbusFrame& req
 {
 }
 
+bool ModbusCommand::validateQuantity(const ModbusFrame& request, uint16_t minQuantity, uint16_t maxQuantity, ModbusFrame& response)
+{
+    uint16_t quantity = (request.frameData[2] << 8) | request.frameData[3];
+
+    if (quantity < 1 || quantity > 0x7D0) {
+        response.exceptionCode = ModbusExceptionCode::ILLEGAL_DATA_ADDRESS;
+        response.frameType = ModbusFrameType::EXCEPTION;
+        return false;
+    }
+
+    return true;
+}
+
+bool ModbusCommand::validateAddress(const ModbusFrame& request, uint16_t maxValidAddress, ModbusFrame& response)
+{
+    uint16_t startAddress = (request.frameData[0] << 8) | request.frameData[1];
+    uint16_t quantity = (request.frameData[2] << 8) | request.frameData[3];
+
+    if (startAddress >= 0 && startAddress + quantity > maxValidAddress) {
+        response.exceptionCode = ModbusExceptionCode::ILLEGAL_DATA_ADDRESS;
+        response.frameType = ModbusFrameType::EXCEPTION;
+        return false;
+    }
+
+    return true;
+}
+
 ModbusFrame ReadCoilCommand::execute(ModbusDataModel& data, const ModbusFrame& request)
 {
     /**
@@ -27,15 +54,11 @@ ModbusFrame ReadCoilCommand::execute(ModbusDataModel& data, const ModbusFrame& r
     uint16_t startAddress = (request.frameData[0] << 8) | request.frameData[1];
     uint16_t qtyOutput = (request.frameData[2] << 8) | request.frameData[3];
 
-    if (qtyOutput < 1 || qtyOutput > 0x7D0) {
-        response.exceptionCode = ModbusExceptionCode::ILLEGAL_DATA_ADDRESS;
-        response.frameType = ModbusFrameType::EXCEPTION;
+    if (!validateQuantity(request, 1, 2000, response)) {
         return response;
     }
 
-    if (startAddress >= 0 && startAddress + qtyOutput > ModbusDataModel::MAX_COILS) {
-        response.exceptionCode = ModbusExceptionCode::ILLEGAL_DATA_ADDRESS;
-        response.frameType = ModbusFrameType::EXCEPTION;
+    if (!validateAddress(request, ModbusDataModel::MAX_COILS, response)) {
         return response;
     }
 
@@ -77,15 +100,11 @@ ModbusFrame ReadDiscreteInputCommand::execute(ModbusDataModel& data, const Modbu
     uint16_t startAddress = (request.frameData[0] << 8) | request.frameData[1];
     uint16_t qtyInput = (request.frameData[2] << 8) | request.frameData[3];
 
-    if (qtyInput < 1 || qtyInput > 0x7D0) {
-        response.exceptionCode = ModbusExceptionCode::ILLEGAL_DATA_ADDRESS;
-        response.frameType = ModbusFrameType::EXCEPTION;
+    if (!validateQuantity(request, 1, 2000, response)) {
         return response;
     }
 
-    if (startAddress >= 0 && startAddress + qtyInput > ModbusDataModel::MAX_COILS) {
-        response.exceptionCode = ModbusExceptionCode::ILLEGAL_DATA_ADDRESS;
-        response.frameType = ModbusFrameType::EXCEPTION;
+    if (!validateAddress(request, ModbusDataModel::MAX_DISCREET_INPUT, response)) {
         return response;
     }
 

@@ -7,6 +7,10 @@
 class ModbusCommand {
 public:
     virtual ModbusFrame execute(ModbusDataModel& data, const ModbusFrame& request) = 0;
+
+protected:
+    bool validateQuantity(const ModbusFrame& request, uint16_t minQuantity, uint16_t maxQuantity, ModbusFrame& response);
+    bool validateAddress(const ModbusFrame& request, uint16_t maxValidAddress, ModbusFrame& response);
 };
 
 class ReadCoilCommand : public ModbusCommand {
