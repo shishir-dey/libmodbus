@@ -122,3 +122,41 @@ ModbusFrame ReadDiscreteInputCommand::execute(ModbusDataModel& data, const Modbu
     response.validDataCount = qtyInput + 1;
     return response;
 }
+
+ModbusFrame ReadHoldingRegisterCommand::execute(ModbusDataModel& data, const ModbusFrame& request)
+{
+    /**
+     * Procedure for Reading Holding Registers
+     *
+     * 1) Check if the Quantity of Inputs is within the valid range (1 to 2000).
+     *    - If valid, proceed to step 2.
+     *    - If not valid, return ExceptionCode ILLEGAL_DATA_VALUE (03).
+     *
+     * 2) Verify the validity of the Starting Address and the sum of Starting Address + Quantity of Registers.
+     *    - If both conditions are met, proceed to step 3.
+     *    - If not met, return ExceptionCode ILLEGAL_DATA_ADDRESS (02).
+     *
+     * 3) Perform the Read Holding Registers operation and check for success.
+     *    - If successful, the Modbus Server sends a Modbus Response (mb_rsp).
+     *    - If unsuccessful, return ExceptionCode SLAVE_DEVICE_FAILURE (04).
+     */
+}
+
+ModbusFrame ReadInputRegisterCommand::execute(ModbusDataModel& data, const ModbusFrame& request)
+{
+    /**
+     * Procedure for Reading Input Registers
+     *
+     * 1) Check if the Quantity of Inputs is within the valid range (1 to 2000).
+     *    - If valid, proceed to step 2.
+     *    - If not valid, return ExceptionCode ILLEGAL_DATA_VALUE (03).
+     *
+     * 2) Verify the validity of the Starting Address and the sum of Starting Address + Quantity of Registers.
+     *    - If both conditions are met, proceed to step 3.
+     *    - If not met, return ExceptionCode ILLEGAL_DATA_ADDRESS (02).
+     *
+     * 3) Perform the Read Input Registers operation and check for success.
+     *    - If successful, the Modbus Server sends a Modbus Response (mb_rsp).
+     *    - If unsuccessful, return ExceptionCode SLAVE_DEVICE_FAILURE (04).
+     */
+}
