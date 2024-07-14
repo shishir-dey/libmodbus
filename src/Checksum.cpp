@@ -1,19 +1,19 @@
 #include "Checksum.hpp"
 
-unsigned char Checksum::calculateLRC(const unsigned char* pucFrame, unsigned short usLen)
+uint8_t Checksum::calculateLRC(const uint8_t* pucFrame, uint16_t usLen)
 {
-    unsigned char ucLRC = 0;
+    uint8_t ucLRC = 0;
     while (usLen--) {
         ucLRC += *pucFrame++;
     }
-    return (unsigned char)-((char)ucLRC);
+    return static_cast<uint8_t>(-static_cast<int8_t>(ucLRC));
 }
 
-unsigned short Checksum::calculateCRC16(const unsigned char* buffer, unsigned short length)
+uint16_t Checksum::calculateCRC16(const uint8_t* buffer, uint16_t length)
 {
-    unsigned int cur_crc = 0xFFFF;
+    uint16_t cur_crc = 0xFFFF;
     do {
-        unsigned int i = 8;
+        uint8_t i = 8;
         cur_crc = cur_crc ^ *buffer++;
         do {
             if (cur_crc & 0x0001) {

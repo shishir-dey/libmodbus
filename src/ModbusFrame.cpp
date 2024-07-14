@@ -25,6 +25,7 @@ std::array<uint8_t, 256> ModbusRtuFrame::serialize()
     }
     return output;
 }
+
 void ModbusRtuFrame::deserialize(ModbusFrameType frameType, const std::array<uint8_t, 256>& data)
 {
     reset();

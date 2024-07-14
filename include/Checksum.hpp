@@ -1,10 +1,12 @@
 #ifndef CHECKSUM_HPP
 #define CHECKSUM_HPP
 
+#include <cstdint>
+
 class Checksum {
 public:
-    static unsigned char calculateLRC(const unsigned char* pucFrame, unsigned short usLen);
-    static unsigned short calculateCRC16(const unsigned char* buffer, unsigned short length);
+    static uint8_t calculateLRC(const uint8_t* pucFrame, uint16_t usLen);
+    static uint16_t calculateCRC16(const uint8_t* buffer, uint16_t length);
 };
 
 #endif

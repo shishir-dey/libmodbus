@@ -16,7 +16,7 @@ public:
         commands[ModbusFunctionCode::READ_COILS] = std::make_unique<ReadCoilCommand>();
     }
 
-    virtual std::array<uint8_t, 256> handleRequest(const std::array<uint8_t, 256>& requestData)
+    virtual std::array<uint8_t, 256> process(const std::array<uint8_t, 256>& requestData)
     {
         return {};
     }
@@ -24,7 +24,7 @@ public:
 
 class ModbusRtuServer : public ModbusBaseServer {
 public:
-    std::array<uint8_t, 256> handleRequest(const std::array<uint8_t, 256>& requestData);
+    std::array<uint8_t, 256> process(const std::array<uint8_t, 256>& requestData);
 };
 
 #endif
