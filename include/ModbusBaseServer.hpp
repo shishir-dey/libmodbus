@@ -14,9 +14,14 @@ public:
     ModbusBaseServer()
     {
         commands[ModbusFunctionCode::READ_COILS] = std::make_unique<ReadCoilCommand>();
+        commands[ModbusFunctionCode::READ_DISCRETE_INPUTS] = std::make_unique<ReadDiscreteInputCommand>();
+        commands[ModbusFunctionCode::READ_HOLDING_REGISTERS] = std::make_unique<ReadHoldingRegisterCommand>();
+        commands[ModbusFunctionCode::READ_INPUT_REGISTERS] = std::make_unique<ReadInputRegisterCommand>();
+        commands[ModbusFunctionCode::WRITE_SINGLE_COIL] = std::make_unique<WriteCoilCommand>();
+        commands[ModbusFunctionCode::WRITE_SINGLE_REGISTER] = std::make_unique<WriteHoldingRegisterCommand>();
     }
 
-    virtual std::array<uint8_t, 256> process(const std::array<uint8_t, 256>& requestData)
+    virtual std::vector<uint8_t> process(const std::vector<uint8_t>& requestData)
     {
         return {};
     }
@@ -24,7 +29,7 @@ public:
 
 class ModbusRtuServer : public ModbusBaseServer {
 public:
-    std::array<uint8_t, 256> process(const std::array<uint8_t, 256>& requestData);
+    std::vector<uint8_t> process(const std::vector<uint8_t>& requestData);
 };
 
 #endif
