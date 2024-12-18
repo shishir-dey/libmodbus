@@ -6,6 +6,7 @@
 
 class ModbusCommand {
 public:
+    virtual ~ModbusCommand() = default;
     virtual ModbusFrame execute(ModbusDataModel& data, const ModbusFrame& request) = 0;
 
 protected:

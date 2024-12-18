@@ -2,10 +2,10 @@
 #define MODBUSFRAME_HPP
 
 #include "Modbus.hpp"
-#include <array>
 #include <cstdint>
 #include <memory>
 #include <variant>
+#include <vector>
 
 enum class ModbusFrameType {
     NONE,
@@ -16,10 +16,9 @@ enum class ModbusFrameType {
 
 class ModbusFrame {
 public:
-    uint8_t validDataCount;
     ModbusFrameType frameType;
     ModbusFunctionCode functionCode;
-    std::array<uint8_t, 256> frameData;
+    std::vector<uint8_t> frameData;
     ModbusExceptionCode exceptionCode;
 };
 
@@ -36,9 +35,8 @@ public:
     ModbusFrame pdu;
     uint16_t checksum;
 
-    std::array<uint8_t, 256> serialize();
-    void deserialize(ModbusFrameType frameType, const std::array<uint8_t, 256>& data);
-    void reset();
+    std::vector<uint8_t> serialize();
+    void deserialize(ModbusFrameType frameType, const std::vector<uint8_t>& data);
 };
 
 class ModbusAsciiFrame {
@@ -52,8 +50,8 @@ public:
     uint16_t checksum;
     uint16_t end;
 
-    std::array<uint8_t, 256> serialize();
-    void deserialize(const std::array<uint8_t, 256>& data);
+    std::vector<uint8_t> serialize();
+    void deserialize(const std::vector<uint8_t>& data);
 };
 
 class MbapHeader {
@@ -85,8 +83,8 @@ public:
     MbapHeader mbapHeader;
     ModbusFrame pdu;
 
-    std::array<uint8_t, 256> serialize();
-    void deserialize(const std::array<uint8_t, 256>& data);
+    std::vector<uint8_t> serialize();
+    void deserialize(const std::vector<uint8_t>& data);
 };
 
 #endif

@@ -1,80 +1,79 @@
 #include "ModbusFrame.hpp"
 #include "Checksum.hpp"
+#include <vector>
 
-std::array<uint8_t, 256> ModbusRtuFrame::serialize()
+std::vector<uint8_t> ModbusRtuFrame::serialize()
 {
-    std::array<uint8_t, 256> output {};
+    std::vector<uint8_t> output;
 
     switch (pdu.frameType) {
     case ModbusFrameType::REQUEST:
-        pdu.validDataCount = 4;
     case ModbusFrameType::RESPONSE: {
         size_t index = 0;
-        output[index++] = slaveaddr;
-        output[index++] = static_cast<uint8_t>(pdu.functionCode);
-        for (size_t i = 0; i < pdu.validDataCount; ++i) {
-            output[index++] = pdu.frameData[i];
+        output.push_back(slaveaddr);
+        output.push_back(static_cast<uint8_t>(pdu.functionCode));
+        for (const auto& byte : pdu.frameData) {
+            output.push_back(byte);
         }
-        output[index++] = checksum & 0xFF;
-        output[index++] = (checksum >> 8) & 0xFF;
+        output.push_back(checksum & 0xFF);
+        output.push_back((checksum >> 8) & 0xFF);
         return output;
     }
     case ModbusFrameType::EXCEPTION: {
         return output;
     }
+    case ModbusFrameType::NONE: {
+        // Handle NONE case
+        break;
+    }
     }
     return output;
 }
 
-void ModbusRtuFrame::deserialize(ModbusFrameType frameType, const std::array<uint8_t, 256>& data)
+void ModbusRtuFrame::deserialize(ModbusFrameType frameType, const std::vector<uint8_t>& data)
 {
-    reset();
     pdu.frameType = frameType;
     switch (pdu.frameType) {
     case ModbusFrameType::REQUEST:
     case ModbusFrameType::RESPONSE: {
         slaveaddr = data[0];
         pdu.functionCode = static_cast<ModbusFunctionCode>(data[1]);
+        pdu.frameData.clear();
         for (size_t i = 2; i < data.size() - 2; ++i) {
-            pdu.frameData[i - 2] = data[i];
+            pdu.frameData.push_back(data[i]);
         }
         checksum = (data[data.size() - 2 - 1] << 8) | data[data.size() - 1 - 1];
         /* verify checksum */
     }
     case ModbusFrameType::EXCEPTION: {
     }
+    case ModbusFrameType::NONE: {
+        // Handle NONE case
+        break;
+    }
     }
 }
 
-void ModbusRtuFrame::reset()
+std::vector<uint8_t> ModbusAsciiFrame::serialize()
 {
-    slaveaddr = 0;
-    pdu.frameType = ModbusFrameType::NONE;
-    pdu.functionCode = ModbusFunctionCode::NONE;
-    pdu.frameData.fill(0);
-    checksum = 0;
-}
-
-std::array<uint8_t, 256> ModbusAsciiFrame::serialize()
-{
-    std::array<uint8_t, 256> data {};
+    std::vector<uint8_t> data;
     /* TODO */
     return data;
 }
 
-void ModbusAsciiFrame::deserialize(const std::array<uint8_t, 256>& data)
+void ModbusAsciiFrame::deserialize(const std::vector<uint8_t>& data)
 {
     /* TODO */
 }
 
-std::array<uint8_t, 256> ModbusTcpFrame::serialize()
+std::vector<uint8_t> ModbusTcpFrame::serialize()
 {
-    std::array<uint8_t, 256> data {};
+    std::vector<uint8_t> data;
     /* TODO */
     return data;
 }
 
-void ModbusTcpFrame::deserialize(const std::array<uint8_t, 256>& data)
+void ModbusTcpFrame::deserialize(const std::vector<uint8_t>& data)
 {
     /* TODO */
 }
