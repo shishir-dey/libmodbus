@@ -1,6 +1,8 @@
-<p align="center">
-    <img src="assets/libmodbus-logo.png" alt="libmodbus-logo"/>
-</p>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/libmodbus-dark.svg" width="400">
+  <source media="(prefers-color-scheme: light)" srcset="assets/libmodbus-light.svg" width="400">
+  <img alt="libmodbus logo" src="assets/libmodbus-light.svg" width="400">
+</picture>
 
 ## Build Status
 [![CMake on a single platform](https://github.com/shishir-dey/libmodbus/actions/workflows/cmake-single-platform.yml/badge.svg)](https://github.com/shishir-dey/libmodbus/actions/workflows/cmake-single-platform.yml)
