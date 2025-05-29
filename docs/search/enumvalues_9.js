@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['read_5fcoils_0',['READ_COILS',['../Modbus_8hpp.html#a5590fb5f40c349822097842445e551a8a1bed512bd38c21bdc4b11a926f607fbe',1,'Modbus.hpp']]],
+  ['read_5fdiscrete_5finputs_1',['READ_DISCRETE_INPUTS',['../Modbus_8hpp.html#a5590fb5f40c349822097842445e551a8a60501aed19bc5aac6c12682b17ada72a',1,'Modbus.hpp']]],
+  ['read_5fexception_5fstatus_2',['READ_EXCEPTION_STATUS',['../Modbus_8hpp.html#a5590fb5f40c349822097842445e551a8ae46cfdab660dab78c11e2c2ff45d22bd',1,'Modbus.hpp']]],
+  ['read_5fholding_5fregisters_3',['READ_HOLDING_REGISTERS',['../Modbus_8hpp.html#a5590fb5f40c349822097842445e551a8afaeb28d82740a7a7fcae479be4887864',1,'Modbus.hpp']]],
+  ['read_5finput_5fregisters_4',['READ_INPUT_REGISTERS',['../Modbus_8hpp.html#a5590fb5f40c349822097842445e551a8a457c851e573b881525b829cfd5175083',1,'Modbus.hpp']]],
+  ['request_5',['REQUEST',['../ModbusFrame_8hpp.html#a1ece5e526135c6bfe96c481da2dbd467aad6c35880c58d97c03d60a6ad0f23737',1,'ModbusFrame.hpp']]],
+  ['response_6',['RESPONSE',['../ModbusFrame_8hpp.html#a1ece5e526135c6bfe96c481da2dbd467a4fa1a4d2e48aa765093ca6aae57a5150',1,'ModbusFrame.hpp']]],
+  ['restart_5fcommunications_5foption_7',['RESTART_COMMUNICATIONS_OPTION',['../Modbus_8hpp.html#a1e55daa418414a2012fc65435159d509aa701b230510bf62f211646c4bf24bcac',1,'Modbus.hpp']]],
+  ['return_5fbus_5fcharacter_5foverrun_5fcount_8',['RETURN_BUS_CHARACTER_OVERRUN_COUNT',['../Modbus_8hpp.html#a1e55daa418414a2012fc65435159d509ae26334bf66260b2677248efce3a9a307',1,'Modbus.hpp']]],
+  ['return_5fbus_5fcommunication_5ferror_5fcount_9',['RETURN_BUS_COMMUNICATION_ERROR_COUNT',['../Modbus_8hpp.html#a1e55daa418414a2012fc65435159d509a0e8527cf9447dd3d5e7f48232f2766fe',1,'Modbus.hpp']]],
+  ['return_5fbus_5fexception_5ferror_5fcount_10',['RETURN_BUS_EXCEPTION_ERROR_COUNT',['../Modbus_8hpp.html#a1e55daa418414a2012fc65435159d509a42e2cce70e8fa8ac70bf0ff5e39d437b',1,'Modbus.hpp']]],
+  ['return_5fbus_5fmessage_5fcount_11',['RETURN_BUS_MESSAGE_COUNT',['../Modbus_8hpp.html#a1e55daa418414a2012fc65435159d509aadd765cf8a694657ab0319ad6ed052c6',1,'Modbus.hpp']]],
+  ['return_5fdiagnostic_5fregister_12',['RETURN_DIAGNOSTIC_REGISTER',['../Modbus_8hpp.html#a1e55daa418414a2012fc65435159d509a28548514222c5f66940d23ee72ff4837',1,'Modbus.hpp']]],
+  ['return_5fquery_5fdata_13',['RETURN_QUERY_DATA',['../Modbus_8hpp.html#a1e55daa418414a2012fc65435159d509adbb01b295970b66e4f75f4e4c1d7dbdb',1,'Modbus.hpp']]],
+  ['return_5fslave_5fbusy_5fcount_14',['RETURN_SLAVE_BUSY_COUNT',['../Modbus_8hpp.html#a1e55daa418414a2012fc65435159d509a25b94dc662021e465c6547fef054f283',1,'Modbus.hpp']]],
+  ['return_5fslave_5fmessage_5fcount_15',['RETURN_SLAVE_MESSAGE_COUNT',['../Modbus_8hpp.html#a1e55daa418414a2012fc65435159d509aa4d00393bfba016d6e3b9f57f374bf7f',1,'Modbus.hpp']]],
+  ['return_5fslave_5fnak_5fcount_16',['RETURN_SLAVE_NAK_COUNT',['../Modbus_8hpp.html#a1e55daa418414a2012fc65435159d509a4b240d451f07db509a545ffb5c173daa',1,'Modbus.hpp']]],
+  ['return_5fslave_5fno_5fresponse_5fcount_17',['RETURN_SLAVE_NO_RESPONSE_COUNT',['../Modbus_8hpp.html#a1e55daa418414a2012fc65435159d509a013b1ff310bfa56c06036189443ea901',1,'Modbus.hpp']]]
+];

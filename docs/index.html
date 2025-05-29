@@ -5,10 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libmodbus: Main Page</title>
+<title>libmodbus: libmodbus - C++ Modbus Protocol Implementation</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">libmodbus
    </div>
+   <div id="projectbrief">A lightweight and efficient C++ Modbus library optimized for embedded systems</div>
   </td>
  </tr>
  </tbody>
@@ -47,6 +52,22 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,14 +89,140 @@ $(function() {
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">libmodbus Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">libmodbus - C++ Modbus Protocol Implementation </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><h1><a class="anchor" id="intro_sec"></a>
+Introduction</h1>
+<p>libmodbus is a comprehensive C++ implementation of the Modbus protocol supporting RTU, ASCII, and TCP variants. The library provides a clean, modern C++ interface for building Modbus servers and clients with full compliance to Modbus specifications.</p>
+<h1><a class="anchor" id="features_sec"></a>
+Key Features</h1>
+<ul>
+<li><b>Complete Function Code Support</b>: All standard Modbus function codes<ul>
+<li>FC 01: Read Coils</li>
+<li>FC 02: Read Discrete Inputs</li>
+<li>FC 03: Read Holding Registers</li>
+<li>FC 04: Read Input Registers</li>
+<li>FC 05: Write Single Coil</li>
+<li>FC 06: Write Single Register</li>
+<li>FC 08: Diagnostics</li>
+<li>FC 15: Write Multiple Coils</li>
+<li>FC 16: Write Multiple Registers</li>
+</ul>
+</li>
+<li><b>Multiple Transport Protocols</b>:<ul>
+<li>Modbus RTU (serial with CRC-16)</li>
+<li>Modbus ASCII (serial with LRC) [planned]</li>
+<li>Modbus TCP (Ethernet) [planned]</li>
+</ul>
+</li>
+<li><b>Standards Compliance</b>:<ul>
+<li>Full compliance with Modbus Application Protocol V1.1b3</li>
+<li>Proper exception handling and error reporting</li>
+<li>Function-specific quantity validation</li>
+</ul>
+</li>
+<li><b>Modern C++ Design</b>:<ul>
+<li>C++17 compatible</li>
+<li>RAII principles</li>
+<li>Exception safety</li>
+<li>Type-safe enumerations</li>
+<li>Smart pointer usage</li>
+</ul>
+</li>
+<li><b>Configurable Data Model</b>:<ul>
+<li>Supports standard Modbus limits (2000 coils, 125 registers)</li>
+<li>Customizable limits for specialized applications</li>
+<li>Efficient vector-based storage</li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="usage_sec"></a>
+Basic Usage</h1>
+<h2><a class="anchor" id="server_usage"></a>
+Creating a Modbus RTU Server</h2>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="libmodbus_8hpp.html">libmodbus.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    <span class="comment">// Create RTU server</span></div>
+<div class="line">    <a class="code hl_class" href="classModbusRtuServer.html">ModbusRtuServer</a> server;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Initialize some data</span></div>
+<div class="line">    server.<a class="code hl_variable" href="classModbusBaseServer.html#aa0ccfe7c2d45d242184a525f434c24c5">data</a>.<a class="code hl_function" href="classModbusDataModel.html#a61c94c71253759ad05015904f575edd7">writeCoil</a>(0, <span class="keyword">true</span>);</div>
+<div class="line">    server.<a class="code hl_variable" href="classModbusBaseServer.html#aa0ccfe7c2d45d242184a525f434c24c5">data</a>.<a class="code hl_function" href="classModbusDataModel.html#a6a901d252acfb6b16e9e7c6432dc223a">writeHoldingRegister</a>(0, 0x1234);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Process a request (normally from serial port)</span></div>
+<div class="line">    std::vector&lt;uint8_t&gt; request = {0x01, 0x01, 0x00, 0x00, 0x00, 0x08, 0x3D, 0xCC};</div>
+<div class="line">    <span class="keyword">auto</span> response = server.<a class="code hl_function" href="classModbusRtuServer.html#a72a59929025336cf53da4ea92bc299f7">process</a>(request);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Send response back to client</span></div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassModbusBaseServer_html_aa0ccfe7c2d45d242184a525f434c24c5"><div class="ttname"><a href="classModbusBaseServer.html#aa0ccfe7c2d45d242184a525f434c24c5">ModbusBaseServer::data</a></div><div class="ttdeci">ModbusDataModel data</div><div class="ttdoc">Modbus data model instance.</div><div class="ttdef"><b>Definition</b> ModbusBaseServer.hpp:47</div></div>
+<div class="ttc" id="aclassModbusDataModel_html_a61c94c71253759ad05015904f575edd7"><div class="ttname"><a href="classModbusDataModel.html#a61c94c71253759ad05015904f575edd7">ModbusDataModel::writeCoil</a></div><div class="ttdeci">void writeCoil(uint16_t index, CoilType value)</div><div class="ttdoc">Write a single coil value.</div><div class="ttdef"><b>Definition</b> ModbusDataModel.cpp:39</div></div>
+<div class="ttc" id="aclassModbusDataModel_html_a6a901d252acfb6b16e9e7c6432dc223a"><div class="ttname"><a href="classModbusDataModel.html#a6a901d252acfb6b16e9e7c6432dc223a">ModbusDataModel::writeHoldingRegister</a></div><div class="ttdeci">void writeHoldingRegister(uint16_t index, HoldingRegisterType value)</div><div class="ttdoc">Write a single holding register value.</div><div class="ttdef"><b>Definition</b> ModbusDataModel.cpp:46</div></div>
+<div class="ttc" id="aclassModbusRtuServer_html"><div class="ttname"><a href="classModbusRtuServer.html">ModbusRtuServer</a></div><div class="ttdoc">Modbus RTU server implementation.</div><div class="ttdef"><b>Definition</b> ModbusBaseServer.hpp:125</div></div>
+<div class="ttc" id="aclassModbusRtuServer_html_a72a59929025336cf53da4ea92bc299f7"><div class="ttname"><a href="classModbusRtuServer.html#a72a59929025336cf53da4ea92bc299f7">ModbusRtuServer::process</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; process(const std::vector&lt; uint8_t &gt; &amp;requestData)</div><div class="ttdoc">Process an RTU request and generate an RTU response.</div><div class="ttdef"><b>Definition</b> ModbusRtuServer.cpp:7</div></div>
+<div class="ttc" id="alibmodbus_8hpp_html"><div class="ttname"><a href="libmodbus_8hpp.html">libmodbus.hpp</a></div><div class="ttdoc">Main include file for the libmodbus C++ library.</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="data_model_usage"></a>
+Working with the Data Model</h2>
+<div class="fragment"><div class="line"><a class="code hl_class" href="classModbusDataModel.html">ModbusDataModel</a> data;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Write coil values</span></div>
+<div class="line">data.<a class="code hl_function" href="classModbusDataModel.html#a61c94c71253759ad05015904f575edd7">writeCoil</a>(0, <span class="keyword">true</span>);</div>
+<div class="line">data.<a class="code hl_function" href="classModbusDataModel.html#a61c94c71253759ad05015904f575edd7">writeCoil</a>(1, <span class="keyword">false</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Write register values</span></div>
+<div class="line">data.<a class="code hl_function" href="classModbusDataModel.html#a6a901d252acfb6b16e9e7c6432dc223a">writeHoldingRegister</a>(0, 0x1234);</div>
+<div class="line">data.<a class="code hl_function" href="classModbusDataModel.html#a6a901d252acfb6b16e9e7c6432dc223a">writeHoldingRegister</a>(1, 0x5678);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Read values back</span></div>
+<div class="line"><span class="keywordtype">bool</span> coil0 = data.<a class="code hl_function" href="classModbusDataModel.html#a894dc0fd4d06125d410564d8892afc80">readCoil</a>(0);</div>
+<div class="line">uint16_t reg0 = data.<a class="code hl_function" href="classModbusDataModel.html#abab814408a205220192f3733cfa66168">readHoldingRegister</a>(0);</div>
+<div class="ttc" id="aclassModbusDataModel_html"><div class="ttname"><a href="classModbusDataModel.html">ModbusDataModel</a></div><div class="ttdoc">Configurable Modbus data model with support for all four data types.</div><div class="ttdef"><b>Definition</b> ModbusDataModel.hpp:74</div></div>
+<div class="ttc" id="aclassModbusDataModel_html_a894dc0fd4d06125d410564d8892afc80"><div class="ttname"><a href="classModbusDataModel.html#a894dc0fd4d06125d410564d8892afc80">ModbusDataModel::readCoil</a></div><div class="ttdeci">CoilType readCoil(uint16_t index) const</div><div class="ttdoc">Read a coil value.</div><div class="ttdef"><b>Definition</b> ModbusDataModel.cpp:12</div></div>
+<div class="ttc" id="aclassModbusDataModel_html_abab814408a205220192f3733cfa66168"><div class="ttname"><a href="classModbusDataModel.html#abab814408a205220192f3733cfa66168">ModbusDataModel::readHoldingRegister</a></div><div class="ttdeci">HoldingRegisterType readHoldingRegister(uint16_t index) const</div><div class="ttdoc">Read a holding register value.</div><div class="ttdef"><b>Definition</b> ModbusDataModel.cpp:30</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="architecture_sec"></a>
+Architecture</h1>
+<p>The library is built around several key components:</p>
+<ul>
+<li><b><a class="el" href="classModbusDataModel.html" title="Configurable Modbus data model with support for all four data types.">ModbusDataModel</a></b>: Stores all Modbus data (coils, inputs, registers)</li>
+<li><b><a class="el" href="classModbusCommand.html" title="Abstract base class for all Modbus command implementations.">ModbusCommand</a></b>: Command pattern implementation for function codes</li>
+<li><b><a class="el" href="classModbusFrame.html" title="Core Modbus Protocol Data Unit (PDU) implementation.">ModbusFrame</a></b>: Protocol Data Unit and transport-specific frames</li>
+<li><b><a class="el" href="classModbusBaseServer.html" title="Abstract base class for all Modbus server implementations.">ModbusBaseServer</a></b>: Abstract server base with protocol-specific implementations</li>
+<li><b><a class="el" href="classChecksum.html" title="Static utility class for Modbus checksum calculations.">Checksum</a></b>: Utilities for CRC-16 and LRC calculations</li>
+</ul>
+<h1><a class="anchor" id="compliance_sec"></a>
+Standards Compliance</h1>
+<p>This implementation is fully compliant with:</p><ul>
+<li>Modbus Application Protocol Specification V1.1b3</li>
+<li>Modbus over Serial Line Specification and Implementation Guide V1.02</li>
+<li>Modbus Messaging on TCP/IP Implementation Guide V1.0b</li>
+</ul>
+<h1><a class="anchor" id="testing_sec"></a>
+Testing</h1>
+<p>The library includes comprehensive unit tests covering:</p><ul>
+<li>All function codes and their edge cases</li>
+<li>Exception condition handling</li>
+<li>Frame serialization/deserialization</li>
+<li>CRC calculation accuracy</li>
+<li>Compliance with quantity limits</li>
+</ul>
+<h1><a class="anchor" id="license_sec"></a>
+License</h1>
+<p>This library is released under the MIT License.</p>
+<h1><a class="anchor" id="author_sec"></a>
+Authors</h1>
+<p>libmodbus Project Contributors </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>
