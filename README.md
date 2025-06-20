@@ -4,20 +4,58 @@
   <source media="(prefers-color-scheme: light)" srcset="assets/libmodbus-light.svg" width="1280">
   <img alt="libmodbus logo" src="assets/libmodbus-light.svg" width="1280">
 </picture>
+
+# libmodbus - C++ Modbus Protocol Implementation
+
+A comprehensive C++ implementation of the Modbus protocol supporting RTU, ASCII, and TCP variants. The library provides a clean, modern C++ interface for building Modbus servers and clients with full compliance to Modbus specifications.
+
 </div>
 
-## Build Status
+## 🚀 Features
+
+- **Complete Function Code Support**: All standard Modbus function codes (FC 01-08, 15-16)
+- **Multiple Transport Protocols**: RTU (complete), ASCII and TCP (planned)
+- **Standards Compliance**: Full compliance with Modbus Application Protocol V1.1b3
+- **Modern C++ Design**: C++17 compatible with RAII principles and type safety
+- **Configurable Data Model**: Supports standard and custom Modbus limits
+- **Comprehensive Testing**: Full unit test coverage with Google Test
+
+## 📊 Build Status
+
 [![CMake on a single platform](https://github.com/shishir-dey/libmodbus/actions/workflows/cmake-single-platform.yml/badge.svg)](https://github.com/shishir-dey/libmodbus/actions/workflows/cmake-single-platform.yml)
-[![Generate Doxygen documentation](https://github.com/shishir-dey/libmodbus/actions/workflows/doxygen.yml/badge.svg)](https://github.com/shishir-dey/libmodbus/actions/workflows/doxygen.yml)
+[![Generate Sphinx documentation](https://github.com/shishir-dey/libmodbus/actions/workflows/sphinx.yml/badge.svg)](https://github.com/shishir-dey/libmodbus/actions/workflows/sphinx.yml)
 [![Pages build & deployment](https://github.com/shishir-dey/libmodbus/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/shishir-dey/libmodbus/actions/workflows/pages/pages-build-deployment)
 
-## License
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://img.shields.io/badge/license-MIT-blue.svg)
+## 🚀 Quick Start
 
-## Activity
-[![Commit Activity](https://img.shields.io/github/commit-activity/m/shishir-dey/libmodbus)](https://img.shields.io/github/commit-activity/m/shishir-dey/libmodbus)
-[![Last Commit](https://img.shields.io/github/last-commit/shishir-dey/libmodbus)](https://img.shields.io/github/last-commit/shishir-dey/libmodbus)
+### Building the Library
 
-## Contributions
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+```bash
+git clone --recursive https://github.com/shishir-dey/libmodbus.git
+cd libmodbus
+mkdir build && cd build
+cmake ..
+make
+```
 
+### Running Tests
+
+```bash
+cd build
+make test
+```
+
+## 📖 Documentation
+
+- **[Complete Documentation](https://shishir-dey.github.io/libmodbus/)** - Full API reference and guides
+- **[API Reference](https://shishir-dey.github.io/libmodbus/api/)** - Detailed class and function documentation  
+- **[Examples](https://shishir-dey.github.io/libmodbus/examples.html)** - Practical usage examples
+- **[Testing Guide](https://shishir-dey.github.io/libmodbus/testing.html)** - Testing framework and guidelines
+
+### Generating Documentation Locally
+
+```bash
+cd docs
+pip install -r requirements.txt
+make html
+```
