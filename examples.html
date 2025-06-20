@@ -1,0 +1,1181 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Examples &mdash; libmodbus 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Testing" href="testing.html" />
+    <link rel="prev" title="Overview" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            libmodbus
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#what-is-modbus">📖 <strong>What is Modbus?</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#library-architecture">🏗️ <strong>Library Architecture</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#component-overview">Component Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#_CPPv415ModbusDataModel"><code class="docutils literal notranslate"><span class="pre">ModbusDataModel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#_CPPv416ModbusBaseServer"><code class="docutils literal notranslate"><span class="pre">ModbusBaseServer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#data-model">Data Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#supported-protocols">🌐 <strong>Supported Protocols</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#rtu-remote-terminal-unit">RTU (Remote Terminal Unit)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#_CPPv415ModbusRtuServer"><code class="docutils literal notranslate"><span class="pre">ModbusRtuServer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#ascii-planned">ASCII (Planned)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#tcp-planned">TCP (Planned)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#function-codes">⚙️ <strong>Function Codes</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#read-functions">Read Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#_CPPv415ReadCoilCommand"><code class="docutils literal notranslate"><span class="pre">ReadCoilCommand</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#_CPPv424ReadDiscreteInputCommand"><code class="docutils literal notranslate"><span class="pre">ReadDiscreteInputCommand</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#_CPPv426ReadHoldingRegisterCommand"><code class="docutils literal notranslate"><span class="pre">ReadHoldingRegisterCommand</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#_CPPv424ReadInputRegisterCommand"><code class="docutils literal notranslate"><span class="pre">ReadInputRegisterCommand</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#write-functions">Write Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#_CPPv416WriteCoilCommand"><code class="docutils literal notranslate"><span class="pre">WriteCoilCommand</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#_CPPv427WriteHoldingRegisterCommand"><code class="docutils literal notranslate"><span class="pre">WriteHoldingRegisterCommand</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#_CPPv425WriteMultipleCoilsCommand"><code class="docutils literal notranslate"><span class="pre">WriteMultipleCoilsCommand</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#_CPPv429WriteMultipleRegistersCommand"><code class="docutils literal notranslate"><span class="pre">WriteMultipleRegistersCommand</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#diagnostic-functions">Diagnostic Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#_CPPv418DiagnosticsCommand"><code class="docutils literal notranslate"><span class="pre">DiagnosticsCommand</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#frame-processing">🔧 <strong>Frame Processing</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#frame-types">Frame Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#_CPPv415ModbusFrameType"><code class="docutils literal notranslate"><span class="pre">ModbusFrameType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#_CPPv411ModbusFrame"><code class="docutils literal notranslate"><span class="pre">ModbusFrame</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#_CPPv414ModbusRtuFrame"><code class="docutils literal notranslate"><span class="pre">ModbusRtuFrame</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#error-handling">🛡️ <strong>Error Handling</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#exception-codes">Exception Codes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#_CPPv419ModbusExceptionCode"><code class="docutils literal notranslate"><span class="pre">ModbusExceptionCode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#checksum-utilities">🧮 <strong>Checksum Utilities</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#_CPPv48Checksum"><code class="docutils literal notranslate"><span class="pre">Checksum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#_CPPv4N8Checksum12calculateLRCEPK7uint8_t8uint16_t"><code class="docutils literal notranslate"><span class="pre">calculateLRC()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#_CPPv4N8Checksum14calculateCRC16EPK7uint8_t8uint16_t"><code class="docutils literal notranslate"><span class="pre">calculateCRC16()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#standards-compliance">📊 <strong>Standards Compliance</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#performance-features">🚀 <strong>Performance Features</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#extensibility">🔧 <strong>Extensibility</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-server-setup">🚀 <strong>Basic Server Setup</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-simple-rtu-server">Creating a Simple RTU Server</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#reading-data">📖 <strong>Reading Data</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#reading-coils-function-code-01">Reading Coils (Function Code 01)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reading-holding-registers-function-code-03">Reading Holding Registers (Function Code 03)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reading-discrete-inputs-function-code-02">Reading Discrete Inputs (Function Code 02)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reading-input-registers-function-code-04">Reading Input Registers (Function Code 04)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-data">✏️ <strong>Writing Data</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#writing-single-coil-function-code-05">Writing Single Coil (Function Code 05)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writing-single-register-function-code-06">Writing Single Register (Function Code 06)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writing-multiple-coils-function-code-15">Writing Multiple Coils (Function Code 15)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writing-multiple-registers-function-code-16">Writing Multiple Registers (Function Code 16)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#diagnostics">🔧 <strong>Diagnostics</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#diagnostics-function-function-code-08">Diagnostics Function (Function Code 08)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#error-handling">🚨 <strong>Error Handling</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#exception-response-example">Exception Response Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#address-out-of-range-example">Address Out of Range Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#real-world-integration">🔄 <strong>Real-World Integration</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#serial-port-integration-template">Serial Port Integration Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-data-model-limits">Custom Data Model Limits</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#best-practices">💡 <strong>Best Practices</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debugging-tips">🔍 <strong>Debugging Tips</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#test-framework">🧪 <strong>Test Framework</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#running-tests">🚀 <strong>Running Tests</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#test-coverage">📋 <strong>Test Coverage</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing.html#current-test-coverage">Current Test Coverage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#test-examples">🔍 <strong>Test Examples</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing.html#basic-function-code-test">Basic Function Code Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing.html#exception-handling-test">Exception Handling Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing.html#crc-validation-test">CRC Validation Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing.html#address-range-test">Address Range Test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#writing-additional-tests">🔧 <strong>Writing Additional Tests</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing.html#test-fixture-setup">Test Fixture Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing.html#parameterized-tests">Parameterized Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing.html#helper-functions">Helper Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#test-data-generators">🧩 <strong>Test Data Generators</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing.html#crc-test-data-generator">CRC Test Data Generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing.html#boundary-value-test-generator">Boundary Value Test Generator</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#performance-testing">📊 <strong>Performance Testing</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing.html#throughput-test">Throughput Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing.html#memory-usage-test">Memory Usage Test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#debugging-failed-tests">🛠️ <strong>Debugging Failed Tests</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing.html#verbose-test-output">Verbose Test Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing.html#test-debugging-macros">Test Debugging Macros</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#continuous-integration">🔄 <strong>Continuous Integration</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#best-practices-for-testing">🎯 <strong>Best Practices for Testing</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#adding-new-tests">📝 <strong>Adding New Tests</strong></a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#core-components">📚 <strong>Core Components</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#main-library-header">Main Library Header</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv49libmodbus"><code class="docutils literal notranslate"><span class="pre">libmodbus</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#data-model">📊 <strong>Data Model</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv417DiscreteInputType"><code class="docutils literal notranslate"><span class="pre">DiscreteInputType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv48CoilType"><code class="docutils literal notranslate"><span class="pre">CoilType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv417InputRegisterType"><code class="docutils literal notranslate"><span class="pre">InputRegisterType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv419HoldingRegisterType"><code class="docutils literal notranslate"><span class="pre">HoldingRegisterType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv415ModbusDataModel"><code class="docutils literal notranslate"><span class="pre">ModbusDataModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel15ModbusDataModelEv"><code class="docutils literal notranslate"><span class="pre">ModbusDataModel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel15ModbusDataModelE6size_t6size_t6size_t6size_t"><code class="docutils literal notranslate"><span class="pre">ModbusDataModel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4NK15ModbusDataModel20getMaxDiscreteInputsEv"><code class="docutils literal notranslate"><span class="pre">getMaxDiscreteInputs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4NK15ModbusDataModel11getMaxCoilsEv"><code class="docutils literal notranslate"><span class="pre">getMaxCoils()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4NK15ModbusDataModel20getMaxInputRegistersEv"><code class="docutils literal notranslate"><span class="pre">getMaxInputRegisters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4NK15ModbusDataModel22getMaxHoldingRegistersEv"><code class="docutils literal notranslate"><span class="pre">getMaxHoldingRegisters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4NK15ModbusDataModel17readDiscreteInputE8uint16_t"><code class="docutils literal notranslate"><span class="pre">readDiscreteInput()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4NK15ModbusDataModel8readCoilE8uint16_t"><code class="docutils literal notranslate"><span class="pre">readCoil()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4NK15ModbusDataModel17readInputRegisterE8uint16_t"><code class="docutils literal notranslate"><span class="pre">readInputRegister()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4NK15ModbusDataModel19readHoldingRegisterE8uint16_t"><code class="docutils literal notranslate"><span class="pre">readHoldingRegister()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel9writeCoilE8uint16_t8CoilType"><code class="docutils literal notranslate"><span class="pre">writeCoil()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel20writeHoldingRegisterE8uint16_t19HoldingRegisterType"><code class="docutils literal notranslate"><span class="pre">writeHoldingRegister()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel18writeMultipleCoilsE8uint16_tA_K8CoilType6size_t"><code class="docutils literal notranslate"><span class="pre">writeMultipleCoils()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel29writeMultipleHoldingRegistersE8uint16_tA_K19HoldingRegisterType6size_t"><code class="docutils literal notranslate"><span class="pre">writeMultipleHoldingRegisters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel16setDiscreteInputE8uint16_t17DiscreteInputType"><code class="docutils literal notranslate"><span class="pre">setDiscreteInput()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel16setInputRegisterE8uint16_t17InputRegisterType"><code class="docutils literal notranslate"><span class="pre">setInputRegister()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel17getDiscreteInputsEv"><code class="docutils literal notranslate"><span class="pre">getDiscreteInputs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel8getCoilsEv"><code class="docutils literal notranslate"><span class="pre">getCoils()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel17getInputRegistersEv"><code class="docutils literal notranslate"><span class="pre">getInputRegisters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel19getHoldingRegistersEv"><code class="docutils literal notranslate"><span class="pre">getHoldingRegisters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel27DEFAULT_MAX_DISCRETE_INPUTSE"><code class="docutils literal notranslate"><span class="pre">DEFAULT_MAX_DISCRETE_INPUTS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel17DEFAULT_MAX_COILSE"><code class="docutils literal notranslate"><span class="pre">DEFAULT_MAX_COILS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel27DEFAULT_MAX_INPUT_REGISTERSE"><code class="docutils literal notranslate"><span class="pre">DEFAULT_MAX_INPUT_REGISTERS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel29DEFAULT_MAX_HOLDING_REGISTERSE"><code class="docutils literal notranslate"><span class="pre">DEFAULT_MAX_HOLDING_REGISTERS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel18MAX_DISCREET_INPUTE"><code class="docutils literal notranslate"><span class="pre">MAX_DISCREET_INPUT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel9MAX_COILSE"><code class="docutils literal notranslate"><span class="pre">MAX_COILS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel19MAX_INPUT_REGISTERSE"><code class="docutils literal notranslate"><span class="pre">MAX_INPUT_REGISTERS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel21MAX_HOLDING_REGISTERSE"><code class="docutils literal notranslate"><span class="pre">MAX_HOLDING_REGISTERS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel14discreteInputsE"><code class="docutils literal notranslate"><span class="pre">discreteInputs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel5coilsE"><code class="docutils literal notranslate"><span class="pre">coils</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel14inputRegistersE"><code class="docutils literal notranslate"><span class="pre">inputRegisters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusDataModel16holdingRegistersE"><code class="docutils literal notranslate"><span class="pre">holdingRegisters</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#protocol-definitions">🗂️ <strong>Protocol Definitions</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv418ModbusFunctionCode"><code class="docutils literal notranslate"><span class="pre">ModbusFunctionCode</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N18ModbusFunctionCode4NONEE"><code class="docutils literal notranslate"><span class="pre">NONE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N18ModbusFunctionCode10READ_COILSE"><code class="docutils literal notranslate"><span class="pre">READ_COILS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N18ModbusFunctionCode20READ_DISCRETE_INPUTSE"><code class="docutils literal notranslate"><span class="pre">READ_DISCRETE_INPUTS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N18ModbusFunctionCode22READ_HOLDING_REGISTERSE"><code class="docutils literal notranslate"><span class="pre">READ_HOLDING_REGISTERS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N18ModbusFunctionCode20READ_INPUT_REGISTERSE"><code class="docutils literal notranslate"><span class="pre">READ_INPUT_REGISTERS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N18ModbusFunctionCode17WRITE_SINGLE_COILE"><code class="docutils literal notranslate"><span class="pre">WRITE_SINGLE_COIL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N18ModbusFunctionCode21WRITE_SINGLE_REGISTERE"><code class="docutils literal notranslate"><span class="pre">WRITE_SINGLE_REGISTER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N18ModbusFunctionCode21READ_EXCEPTION_STATUSE"><code class="docutils literal notranslate"><span class="pre">READ_EXCEPTION_STATUS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N18ModbusFunctionCode11DIAGNOSTICSE"><code class="docutils literal notranslate"><span class="pre">DIAGNOSTICS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N18ModbusFunctionCode20WRITE_MULTIPLE_COILSE"><code class="docutils literal notranslate"><span class="pre">WRITE_MULTIPLE_COILS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N18ModbusFunctionCode24WRITE_MULTIPLE_REGISTERSE"><code class="docutils literal notranslate"><span class="pre">WRITE_MULTIPLE_REGISTERS</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv419ModbusExceptionCode"><code class="docutils literal notranslate"><span class="pre">ModbusExceptionCode</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N19ModbusExceptionCode4NONEE"><code class="docutils literal notranslate"><span class="pre">NONE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N19ModbusExceptionCode16ILLEGAL_FUNCTIONE"><code class="docutils literal notranslate"><span class="pre">ILLEGAL_FUNCTION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N19ModbusExceptionCode20ILLEGAL_DATA_ADDRESSE"><code class="docutils literal notranslate"><span class="pre">ILLEGAL_DATA_ADDRESS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N19ModbusExceptionCode18ILLEGAL_DATA_VALUEE"><code class="docutils literal notranslate"><span class="pre">ILLEGAL_DATA_VALUE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N19ModbusExceptionCode20SLAVE_DEVICE_FAILUREE"><code class="docutils literal notranslate"><span class="pre">SLAVE_DEVICE_FAILURE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N19ModbusExceptionCode11ACKNOWLEDGEE"><code class="docutils literal notranslate"><span class="pre">ACKNOWLEDGE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N19ModbusExceptionCode17SLAVE_DEVICE_BUSYE"><code class="docutils literal notranslate"><span class="pre">SLAVE_DEVICE_BUSY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N19ModbusExceptionCode23NEGATIVE_ACKNOWLEDGMENTE"><code class="docutils literal notranslate"><span class="pre">NEGATIVE_ACKNOWLEDGMENT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N19ModbusExceptionCode19MEMORY_PARITY_ERRORE"><code class="docutils literal notranslate"><span class="pre">MEMORY_PARITY_ERROR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N19ModbusExceptionCode24GATEWAY_PATH_UNAVAILABLEE"><code class="docutils literal notranslate"><span class="pre">GATEWAY_PATH_UNAVAILABLE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N19ModbusExceptionCode39GATEWAY_TARGET_DEVICE_FAILED_TO_RESPONDE"><code class="docutils literal notranslate"><span class="pre">GATEWAY_TARGET_DEVICE_FAILED_TO_RESPOND</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv421ModbusDiagnosticsCode"><code class="docutils literal notranslate"><span class="pre">ModbusDiagnosticsCode</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N21ModbusDiagnosticsCode17RETURN_QUERY_DATAE"><code class="docutils literal notranslate"><span class="pre">RETURN_QUERY_DATA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N21ModbusDiagnosticsCode29RESTART_COMMUNICATIONS_OPTIONE"><code class="docutils literal notranslate"><span class="pre">RESTART_COMMUNICATIONS_OPTION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N21ModbusDiagnosticsCode26RETURN_DIAGNOSTIC_REGISTERE"><code class="docutils literal notranslate"><span class="pre">RETURN_DIAGNOSTIC_REGISTER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N21ModbusDiagnosticsCode28CHANGE_ASCII_INPUT_DELIMITERE"><code class="docutils literal notranslate"><span class="pre">CHANGE_ASCII_INPUT_DELIMITER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N21ModbusDiagnosticsCode22FORCE_LISTEN_ONLY_MODEE"><code class="docutils literal notranslate"><span class="pre">FORCE_LISTEN_ONLY_MODE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N21ModbusDiagnosticsCode38CLEAR_COUNTERS_AND_DIAGNOSTIC_REGISTERE"><code class="docutils literal notranslate"><span class="pre">CLEAR_COUNTERS_AND_DIAGNOSTIC_REGISTER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N21ModbusDiagnosticsCode24RETURN_BUS_MESSAGE_COUNTE"><code class="docutils literal notranslate"><span class="pre">RETURN_BUS_MESSAGE_COUNT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N21ModbusDiagnosticsCode36RETURN_BUS_COMMUNICATION_ERROR_COUNTE"><code class="docutils literal notranslate"><span class="pre">RETURN_BUS_COMMUNICATION_ERROR_COUNT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N21ModbusDiagnosticsCode32RETURN_BUS_EXCEPTION_ERROR_COUNTE"><code class="docutils literal notranslate"><span class="pre">RETURN_BUS_EXCEPTION_ERROR_COUNT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N21ModbusDiagnosticsCode26RETURN_SLAVE_MESSAGE_COUNTE"><code class="docutils literal notranslate"><span class="pre">RETURN_SLAVE_MESSAGE_COUNT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N21ModbusDiagnosticsCode30RETURN_SLAVE_NO_RESPONSE_COUNTE"><code class="docutils literal notranslate"><span class="pre">RETURN_SLAVE_NO_RESPONSE_COUNT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N21ModbusDiagnosticsCode22RETURN_SLAVE_NAK_COUNTE"><code class="docutils literal notranslate"><span class="pre">RETURN_SLAVE_NAK_COUNT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N21ModbusDiagnosticsCode23RETURN_SLAVE_BUSY_COUNTE"><code class="docutils literal notranslate"><span class="pre">RETURN_SLAVE_BUSY_COUNT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N21ModbusDiagnosticsCode34RETURN_BUS_CHARACTER_OVERRUN_COUNTE"><code class="docutils literal notranslate"><span class="pre">RETURN_BUS_CHARACTER_OVERRUN_COUNT</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#frame-processing">🖼️ <strong>Frame Processing</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv415ModbusFrameType"><code class="docutils literal notranslate"><span class="pre">ModbusFrameType</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusFrameType4NONEE"><code class="docutils literal notranslate"><span class="pre">NONE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusFrameType7REQUESTE"><code class="docutils literal notranslate"><span class="pre">REQUEST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusFrameType8RESPONSEE"><code class="docutils literal notranslate"><span class="pre">RESPONSE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusFrameType9EXCEPTIONE"><code class="docutils literal notranslate"><span class="pre">EXCEPTION</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv411ModbusFrame"><code class="docutils literal notranslate"><span class="pre">ModbusFrame</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N11ModbusFrame11ModbusFrameEv"><code class="docutils literal notranslate"><span class="pre">ModbusFrame()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N11ModbusFrame11ModbusFrameE15ModbusFrameType18ModbusFunctionCode"><code class="docutils literal notranslate"><span class="pre">ModbusFrame()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N11ModbusFrame9frameTypeE"><code class="docutils literal notranslate"><span class="pre">frameType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N11ModbusFrame12functionCodeE"><code class="docutils literal notranslate"><span class="pre">functionCode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N11ModbusFrame9frameDataE"><code class="docutils literal notranslate"><span class="pre">frameData</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N11ModbusFrame13exceptionCodeE"><code class="docutils literal notranslate"><span class="pre">exceptionCode</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv414ModbusRtuFrame"><code class="docutils literal notranslate"><span class="pre">ModbusRtuFrame</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N14ModbusRtuFrame14ModbusRtuFrameEv"><code class="docutils literal notranslate"><span class="pre">ModbusRtuFrame()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N14ModbusRtuFrame14ModbusRtuFrameE7uint8_t"><code class="docutils literal notranslate"><span class="pre">ModbusRtuFrame()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N14ModbusRtuFrame9serializeEv"><code class="docutils literal notranslate"><span class="pre">serialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N14ModbusRtuFrame11deserializeE15ModbusFrameTypeRKNSt6vectorI7uint8_tEE"><code class="docutils literal notranslate"><span class="pre">deserialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N14ModbusRtuFrame9slaveaddrE"><code class="docutils literal notranslate"><span class="pre">slaveaddr</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N14ModbusRtuFrame3pduE"><code class="docutils literal notranslate"><span class="pre">pdu</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N14ModbusRtuFrame8checksumE"><code class="docutils literal notranslate"><span class="pre">checksum</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv416ModbusAsciiFrame"><code class="docutils literal notranslate"><span class="pre">ModbusAsciiFrame</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N16ModbusAsciiFrame9serializeEv"><code class="docutils literal notranslate"><span class="pre">serialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N16ModbusAsciiFrame11deserializeERKNSt6vectorI7uint8_tEE"><code class="docutils literal notranslate"><span class="pre">deserialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N16ModbusAsciiFrame5startE"><code class="docutils literal notranslate"><span class="pre">start</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N16ModbusAsciiFrame7addressE"><code class="docutils literal notranslate"><span class="pre">address</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N16ModbusAsciiFrame3pduE"><code class="docutils literal notranslate"><span class="pre">pdu</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N16ModbusAsciiFrame8checksumE"><code class="docutils literal notranslate"><span class="pre">checksum</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N16ModbusAsciiFrame3endE"><code class="docutils literal notranslate"><span class="pre">end</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv410MbapHeader"><code class="docutils literal notranslate"><span class="pre">MbapHeader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N10MbapHeader10MbapHeaderEv"><code class="docutils literal notranslate"><span class="pre">MbapHeader()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N10MbapHeader10MbapHeaderE8uint16_t8uint16_t8uint16_t7uint8_t"><code class="docutils literal notranslate"><span class="pre">MbapHeader()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N10MbapHeader13transactionIdE"><code class="docutils literal notranslate"><span class="pre">transactionId</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N10MbapHeader10protocolIdE"><code class="docutils literal notranslate"><span class="pre">protocolId</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N10MbapHeader6lengthE"><code class="docutils literal notranslate"><span class="pre">length</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N10MbapHeader6unitIdE"><code class="docutils literal notranslate"><span class="pre">unitId</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv414ModbusTcpFrame"><code class="docutils literal notranslate"><span class="pre">ModbusTcpFrame</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N14ModbusTcpFrame9serializeEv"><code class="docutils literal notranslate"><span class="pre">serialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N14ModbusTcpFrame11deserializeERKNSt6vectorI7uint8_tEE"><code class="docutils literal notranslate"><span class="pre">deserialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N14ModbusTcpFrame10mbapHeaderE"><code class="docutils literal notranslate"><span class="pre">mbapHeader</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N14ModbusTcpFrame3pduE"><code class="docutils literal notranslate"><span class="pre">pdu</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#command-processing">🎮 <strong>Command Processing</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv413ModbusCommand"><code class="docutils literal notranslate"><span class="pre">ModbusCommand</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N13ModbusCommandD0Ev"><code class="docutils literal notranslate"><span class="pre">~ModbusCommand()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N13ModbusCommand7executeER15ModbusDataModelRK11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N13ModbusCommand16validateQuantityERK11ModbusFrame8uint16_t8uint16_tR11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">validateQuantity()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N13ModbusCommand15validateAddressERK11ModbusFrame8uint16_tR11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">validateAddress()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N13ModbusCommand25validateReadCoilsQuantityERK11ModbusFrameR11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">validateReadCoilsQuantity()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N13ModbusCommand29validateReadRegistersQuantityERK11ModbusFrameR11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">validateReadRegistersQuantity()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N13ModbusCommand34validateWriteMultipleCoilsQuantityERK11ModbusFrameR11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">validateWriteMultipleCoilsQuantity()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N13ModbusCommand38validateWriteMultipleRegistersQuantityERK11ModbusFrameR11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">validateWriteMultipleRegistersQuantity()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv415ReadCoilCommand"><code class="docutils literal notranslate"><span class="pre">ReadCoilCommand</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ReadCoilCommand7executeER15ModbusDataModelRK11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv424ReadDiscreteInputCommand"><code class="docutils literal notranslate"><span class="pre">ReadDiscreteInputCommand</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N24ReadDiscreteInputCommand7executeER15ModbusDataModelRK11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv424ReadInputRegisterCommand"><code class="docutils literal notranslate"><span class="pre">ReadInputRegisterCommand</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N24ReadInputRegisterCommand7executeER15ModbusDataModelRK11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv426ReadHoldingRegisterCommand"><code class="docutils literal notranslate"><span class="pre">ReadHoldingRegisterCommand</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N26ReadHoldingRegisterCommand7executeER15ModbusDataModelRK11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv416WriteCoilCommand"><code class="docutils literal notranslate"><span class="pre">WriteCoilCommand</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N16WriteCoilCommand7executeER15ModbusDataModelRK11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv427WriteHoldingRegisterCommand"><code class="docutils literal notranslate"><span class="pre">WriteHoldingRegisterCommand</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N27WriteHoldingRegisterCommand7executeER15ModbusDataModelRK11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv425WriteMultipleCoilsCommand"><code class="docutils literal notranslate"><span class="pre">WriteMultipleCoilsCommand</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N25WriteMultipleCoilsCommand7executeER15ModbusDataModelRK11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv429WriteMultipleRegistersCommand"><code class="docutils literal notranslate"><span class="pre">WriteMultipleRegistersCommand</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N29WriteMultipleRegistersCommand7executeER15ModbusDataModelRK11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv418DiagnosticsCommand"><code class="docutils literal notranslate"><span class="pre">DiagnosticsCommand</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N18DiagnosticsCommand7executeER15ModbusDataModelRK11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#server-implementation">🖥️ <strong>Server Implementation</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv416ModbusBaseServer"><code class="docutils literal notranslate"><span class="pre">ModbusBaseServer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N16ModbusBaseServer16ModbusBaseServerEv"><code class="docutils literal notranslate"><span class="pre">ModbusBaseServer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N16ModbusBaseServer7processERKNSt6vectorI7uint8_tEE"><code class="docutils literal notranslate"><span class="pre">process()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N16ModbusBaseServer4dataE"><code class="docutils literal notranslate"><span class="pre">data</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N16ModbusBaseServer8commandsE"><code class="docutils literal notranslate"><span class="pre">commands</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv415ModbusRtuServer"><code class="docutils literal notranslate"><span class="pre">ModbusRtuServer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N15ModbusRtuServer7processERKNSt6vectorI7uint8_tEE"><code class="docutils literal notranslate"><span class="pre">process()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#checksum-utilities">🧮 <strong>Checksum Utilities</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#_CPPv48Checksum"><code class="docutils literal notranslate"><span class="pre">Checksum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N8Checksum12calculateLRCEPK7uint8_t8uint16_t"><code class="docutils literal notranslate"><span class="pre">calculateLRC()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/index.html#_CPPv4N8Checksum14calculateCRC16EPK7uint8_t8uint16_t"><code class="docutils literal notranslate"><span class="pre">calculateCRC16()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#detailed-api-sections">🔗 <strong>Detailed API Sections</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/core_classes.html">Core Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#data-model-classes">📊 <strong>Data Model Classes</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#server-classes">🖥️ <strong>Server Classes</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#frame-classes">🖼️ <strong>Frame Classes</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#command-classes">🎮 <strong>Command Classes</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#utility-classes">🧮 <strong>Utility Classes</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/enumerations.html">Enumerations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/enumerations.html#function-codes">🎮 <strong>Function Codes</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/enumerations.html#exception-codes">🚨 <strong>Exception Codes</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/enumerations.html#diagnostic-codes">🔧 <strong>Diagnostic Codes</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/enumerations.html#frame-types">🖼️ <strong>Frame Types</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/functions.html">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#checksum-functions">🧮 <strong>Checksum Functions</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#data-model-functions">📊 <strong>Data Model Functions</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#frame-processing-functions">🖼️ <strong>Frame Processing Functions</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#server-functions">🖥️ <strong>Server Functions</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#command-validation-functions">🎮 <strong>Command Validation Functions</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/core_classes.html">Core Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/core_classes.html#data-model-classes">📊 <strong>Data Model Classes</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/core_classes.html#modbusdatamodel">ModbusDataModel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#_CPPv415ModbusDataModel"><code class="docutils literal notranslate"><span class="pre">ModbusDataModel</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/core_classes.html#server-classes">🖥️ <strong>Server Classes</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/core_classes.html#modbusbaseserver">ModbusBaseServer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#_CPPv416ModbusBaseServer"><code class="docutils literal notranslate"><span class="pre">ModbusBaseServer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/core_classes.html#modbusrtuserver">ModbusRtuServer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#_CPPv415ModbusRtuServer"><code class="docutils literal notranslate"><span class="pre">ModbusRtuServer</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/core_classes.html#frame-classes">🖼️ <strong>Frame Classes</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/core_classes.html#modbusframe">ModbusFrame</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#_CPPv411ModbusFrame"><code class="docutils literal notranslate"><span class="pre">ModbusFrame</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/core_classes.html#modbusrtuframe">ModbusRtuFrame</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#_CPPv414ModbusRtuFrame"><code class="docutils literal notranslate"><span class="pre">ModbusRtuFrame</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/core_classes.html#modbusasciiframe">ModbusAsciiFrame</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#_CPPv416ModbusAsciiFrame"><code class="docutils literal notranslate"><span class="pre">ModbusAsciiFrame</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/core_classes.html#modbustcpframe">ModbusTcpFrame</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#_CPPv414ModbusTcpFrame"><code class="docutils literal notranslate"><span class="pre">ModbusTcpFrame</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/core_classes.html#mbapheader">MbapHeader</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#_CPPv410MbapHeader"><code class="docutils literal notranslate"><span class="pre">MbapHeader</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/core_classes.html#command-classes">🎮 <strong>Command Classes</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/core_classes.html#modbuscommand">ModbusCommand</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#_CPPv413ModbusCommand"><code class="docutils literal notranslate"><span class="pre">ModbusCommand</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/core_classes.html#read-command-classes">Read Command Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#_CPPv415ReadCoilCommand"><code class="docutils literal notranslate"><span class="pre">ReadCoilCommand</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#_CPPv424ReadDiscreteInputCommand"><code class="docutils literal notranslate"><span class="pre">ReadDiscreteInputCommand</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#_CPPv426ReadHoldingRegisterCommand"><code class="docutils literal notranslate"><span class="pre">ReadHoldingRegisterCommand</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#_CPPv424ReadInputRegisterCommand"><code class="docutils literal notranslate"><span class="pre">ReadInputRegisterCommand</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/core_classes.html#write-command-classes">Write Command Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#_CPPv416WriteCoilCommand"><code class="docutils literal notranslate"><span class="pre">WriteCoilCommand</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#_CPPv427WriteHoldingRegisterCommand"><code class="docutils literal notranslate"><span class="pre">WriteHoldingRegisterCommand</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#_CPPv425WriteMultipleCoilsCommand"><code class="docutils literal notranslate"><span class="pre">WriteMultipleCoilsCommand</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#_CPPv429WriteMultipleRegistersCommand"><code class="docutils literal notranslate"><span class="pre">WriteMultipleRegistersCommand</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/core_classes.html#diagnostic-command-classes">Diagnostic Command Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#_CPPv418DiagnosticsCommand"><code class="docutils literal notranslate"><span class="pre">DiagnosticsCommand</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/core_classes.html#utility-classes">🧮 <strong>Utility Classes</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/core_classes.html#checksum">Checksum</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/core_classes.html#_CPPv48Checksum"><code class="docutils literal notranslate"><span class="pre">Checksum</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/enumerations.html">Enumerations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/enumerations.html#function-codes">🎮 <strong>Function Codes</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/enumerations.html#modbusfunctioncode">ModbusFunctionCode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/enumerations.html#_CPPv418ModbusFunctionCode"><code class="docutils literal notranslate"><span class="pre">ModbusFunctionCode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/enumerations.html#exception-codes">🚨 <strong>Exception Codes</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/enumerations.html#modbusexceptioncode">ModbusExceptionCode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/enumerations.html#_CPPv419ModbusExceptionCode"><code class="docutils literal notranslate"><span class="pre">ModbusExceptionCode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/enumerations.html#diagnostic-codes">🔧 <strong>Diagnostic Codes</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/enumerations.html#modbusdiagnosticscode">ModbusDiagnosticsCode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/enumerations.html#_CPPv421ModbusDiagnosticsCode"><code class="docutils literal notranslate"><span class="pre">ModbusDiagnosticsCode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/enumerations.html#frame-types">🖼️ <strong>Frame Types</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/enumerations.html#modbusframetype">ModbusFrameType</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/enumerations.html#_CPPv415ModbusFrameType"><code class="docutils literal notranslate"><span class="pre">ModbusFrameType</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/functions.html">Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/functions.html#checksum-functions">🧮 <strong>Checksum Functions</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/functions.html#crc-16-calculation">CRC-16 Calculation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N8Checksum14calculateCRC16EPK7uint8_t8uint16_t"><code class="docutils literal notranslate"><span class="pre">calculateCRC16()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/functions.html#lrc-calculation">LRC Calculation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N8Checksum12calculateLRCEPK7uint8_t8uint16_t"><code class="docutils literal notranslate"><span class="pre">calculateLRC()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/functions.html#data-model-functions">📊 <strong>Data Model Functions</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/functions.html#read-functions">Read Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4NK15ModbusDataModel8readCoilE8uint16_t"><code class="docutils literal notranslate"><span class="pre">readCoil()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4NK15ModbusDataModel17readDiscreteInputE8uint16_t"><code class="docutils literal notranslate"><span class="pre">readDiscreteInput()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4NK15ModbusDataModel19readHoldingRegisterE8uint16_t"><code class="docutils literal notranslate"><span class="pre">readHoldingRegister()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4NK15ModbusDataModel17readInputRegisterE8uint16_t"><code class="docutils literal notranslate"><span class="pre">readInputRegister()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/functions.html#write-functions">Write Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N15ModbusDataModel9writeCoilE8uint16_t8CoilType"><code class="docutils literal notranslate"><span class="pre">writeCoil()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N15ModbusDataModel20writeHoldingRegisterE8uint16_t19HoldingRegisterType"><code class="docutils literal notranslate"><span class="pre">writeHoldingRegister()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N15ModbusDataModel18writeMultipleCoilsE8uint16_tA_K8CoilType6size_t"><code class="docutils literal notranslate"><span class="pre">writeMultipleCoils()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N15ModbusDataModel29writeMultipleHoldingRegistersE8uint16_tA_K19HoldingRegisterType6size_t"><code class="docutils literal notranslate"><span class="pre">writeMultipleHoldingRegisters()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/functions.html#set-functions-testing-initialization">Set Functions (Testing/Initialization)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N15ModbusDataModel16setDiscreteInputE8uint16_t17DiscreteInputType"><code class="docutils literal notranslate"><span class="pre">setDiscreteInput()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N15ModbusDataModel16setInputRegisterE8uint16_t17InputRegisterType"><code class="docutils literal notranslate"><span class="pre">setInputRegister()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/functions.html#size-getters">Size Getters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4NK15ModbusDataModel11getMaxCoilsEv"><code class="docutils literal notranslate"><span class="pre">getMaxCoils()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4NK15ModbusDataModel20getMaxDiscreteInputsEv"><code class="docutils literal notranslate"><span class="pre">getMaxDiscreteInputs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4NK15ModbusDataModel22getMaxHoldingRegistersEv"><code class="docutils literal notranslate"><span class="pre">getMaxHoldingRegisters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4NK15ModbusDataModel20getMaxInputRegistersEv"><code class="docutils literal notranslate"><span class="pre">getMaxInputRegisters()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/functions.html#frame-processing-functions">🖼️ <strong>Frame Processing Functions</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/functions.html#rtu-frame-functions">RTU Frame Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N14ModbusRtuFrame9serializeEv"><code class="docutils literal notranslate"><span class="pre">serialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N14ModbusRtuFrame11deserializeE15ModbusFrameTypeRKNSt6vectorI7uint8_tEE"><code class="docutils literal notranslate"><span class="pre">deserialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/functions.html#ascii-frame-functions">ASCII Frame Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N16ModbusAsciiFrame9serializeEv"><code class="docutils literal notranslate"><span class="pre">serialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N16ModbusAsciiFrame11deserializeERKNSt6vectorI7uint8_tEE"><code class="docutils literal notranslate"><span class="pre">deserialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/functions.html#tcp-frame-functions">TCP Frame Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N14ModbusTcpFrame9serializeEv"><code class="docutils literal notranslate"><span class="pre">serialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N14ModbusTcpFrame11deserializeERKNSt6vectorI7uint8_tEE"><code class="docutils literal notranslate"><span class="pre">deserialize()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/functions.html#server-functions">🖥️ <strong>Server Functions</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/functions.html#request-processing">Request Processing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N16ModbusBaseServer7processERKNSt6vectorI7uint8_tEE"><code class="docutils literal notranslate"><span class="pre">process()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N15ModbusRtuServer7processERKNSt6vectorI7uint8_tEE"><code class="docutils literal notranslate"><span class="pre">process()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/functions.html#command-validation-functions">🎮 <strong>Command Validation Functions</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/functions.html#generic-validation">Generic Validation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N13ModbusCommand16validateQuantityERK11ModbusFrame8uint16_t8uint16_tR11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">validateQuantity()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N13ModbusCommand15validateAddressERK11ModbusFrame8uint16_tR11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">validateAddress()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/functions.html#function-specific-validation">Function-Specific Validation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N13ModbusCommand25validateReadCoilsQuantityERK11ModbusFrameR11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">validateReadCoilsQuantity()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N13ModbusCommand29validateReadRegistersQuantityERK11ModbusFrameR11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">validateReadRegistersQuantity()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N13ModbusCommand34validateWriteMultipleCoilsQuantityERK11ModbusFrameR11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">validateWriteMultipleCoilsQuantity()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N13ModbusCommand38validateWriteMultipleRegistersQuantityERK11ModbusFrameR11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">validateWriteMultipleRegistersQuantity()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/functions.html#command-execution">Command Execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N13ModbusCommand7executeER15ModbusDataModelRK11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N15ReadCoilCommand7executeER15ModbusDataModelRK11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N24ReadDiscreteInputCommand7executeER15ModbusDataModelRK11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N26ReadHoldingRegisterCommand7executeER15ModbusDataModelRK11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N24ReadInputRegisterCommand7executeER15ModbusDataModelRK11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N16WriteCoilCommand7executeER15ModbusDataModelRK11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N27WriteHoldingRegisterCommand7executeER15ModbusDataModelRK11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N25WriteMultipleCoilsCommand7executeER15ModbusDataModelRK11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N29WriteMultipleRegistersCommand7executeER15ModbusDataModelRK11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/functions.html#_CPPv4N18DiagnosticsCommand7executeER15ModbusDataModelRK11ModbusFrame"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">libmodbus</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Examples</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/shishir-dey/libmodbus/blob/main/docs/examples.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h1>
+<p>This section provides practical examples of using the libmodbus library for various Modbus
+operations. All examples assume you have the library built and linked to your project.</p>
+<section id="basic-server-setup">
+<h2>🚀 <strong>Basic Server Setup</strong><a class="headerlink" href="#basic-server-setup" title="Link to this heading"></a></h2>
+<section id="creating-a-simple-rtu-server">
+<h3>Creating a Simple RTU Server<a class="headerlink" href="#creating-a-simple-rtu-server" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;libmodbus.hpp&quot;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Create an RTU server (responds to slave address 1)</span>
+<span class="w">    </span><span class="n">ModbusRtuServer</span><span class="w"> </span><span class="n">server</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Initialize some example data</span>
+<span class="w">    </span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">writeCoil</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w">           </span><span class="c1">// Coil 0 = ON</span>
+<span class="w">    </span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">writeCoil</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w">          </span><span class="c1">// Coil 1 = OFF</span>
+<span class="w">    </span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">writeHoldingRegister</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1234</span><span class="p">);</span><span class="w"> </span><span class="c1">// Register 0 = 1234</span>
+<span class="w">    </span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">writeHoldingRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">5678</span><span class="p">);</span><span class="w"> </span><span class="c1">// Register 1 = 5678</span>
+
+<span class="w">    </span><span class="c1">// In a real application, you would read from serial port</span>
+<span class="w">    </span><span class="c1">// Here we simulate a request to read 8 coils starting at address 0</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="mh">0x01</span><span class="p">,</span><span class="w">       </span><span class="c1">// Slave address</span>
+<span class="w">        </span><span class="mh">0x01</span><span class="p">,</span><span class="w">       </span><span class="c1">// Function code (Read Coils)</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="c1">// Starting address (0)</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x08</span><span class="p">,</span><span class="w"> </span><span class="c1">// Quantity (8 coils)</span>
+<span class="w">        </span><span class="mh">0x3D</span><span class="p">,</span><span class="w"> </span><span class="mh">0xCC</span><span class="w">  </span><span class="c1">// CRC</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="c1">// Process the request</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Response will contain the coil values</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">response</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Response: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%02X &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">byte</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="reading-data">
+<h2>📖 <strong>Reading Data</strong><a class="headerlink" href="#reading-data" title="Link to this heading"></a></h2>
+<section id="reading-coils-function-code-01">
+<h3>Reading Coils (Function Code 01)<a class="headerlink" href="#reading-coils-function-code-01" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;libmodbus.hpp&quot;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">readCoilsExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ModbusRtuServer</span><span class="w"> </span><span class="n">server</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Set up some coil data</span>
+<span class="w">    </span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">writeCoil</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w">    </span><span class="c1">// Address 0 = ON</span>
+<span class="w">    </span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">writeCoil</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w">   </span><span class="c1">// Address 1 = OFF</span>
+<span class="w">    </span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">writeCoil</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w">    </span><span class="c1">// Address 2 = ON</span>
+<span class="w">    </span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">writeCoil</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w">   </span><span class="c1">// Address 3 = OFF</span>
+
+<span class="w">    </span><span class="c1">// Read Coils request: FC=01, Start=0, Quantity=4</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="mh">0x01</span><span class="p">,</span><span class="w">       </span><span class="c1">// Slave address</span>
+<span class="w">        </span><span class="mh">0x01</span><span class="p">,</span><span class="w">       </span><span class="c1">// Function code</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="c1">// Start address</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x04</span><span class="p">,</span><span class="w"> </span><span class="c1">// Quantity (4 coils)</span>
+<span class="w">        </span><span class="mh">0xFD</span><span class="p">,</span><span class="w"> </span><span class="mh">0xCA</span><span class="w">  </span><span class="c1">// CRC (calculated for this specific request)</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Response format: [Address][FC][ByteCount][Data][CRC]</span>
+<span class="w">    </span><span class="c1">// Expected: 01 01 01 05 xx xx (coils packed in 1 byte: 0101b = 0x05)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="reading-holding-registers-function-code-03">
+<h3>Reading Holding Registers (Function Code 03)<a class="headerlink" href="#reading-holding-registers-function-code-03" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;libmodbus.hpp&quot;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">readHoldingRegistersExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ModbusRtuServer</span><span class="w"> </span><span class="n">server</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Set up register data</span>
+<span class="w">    </span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">writeHoldingRegister</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mh">0x1234</span><span class="p">);</span><span class="w"> </span><span class="c1">// 16-bit value</span>
+<span class="w">    </span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">writeHoldingRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mh">0x5678</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Read Holding Registers request: FC=03, Start=0, Quantity=2</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="mh">0x01</span><span class="p">,</span><span class="w">       </span><span class="c1">// Slave address</span>
+<span class="w">        </span><span class="mh">0x03</span><span class="p">,</span><span class="w">       </span><span class="c1">// Function code</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="c1">// Start address</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w"> </span><span class="c1">// Quantity (2 registers)</span>
+<span class="w">        </span><span class="mh">0xC4</span><span class="p">,</span><span class="w"> </span><span class="mh">0x0B</span><span class="w">  </span><span class="c1">// CRC</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Response: [01][03][04][12][34][56][78][CRC][CRC]</span>
+<span class="w">    </span><span class="c1">// 4 bytes of data (2 registers × 2 bytes each)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="reading-discrete-inputs-function-code-02">
+<h3>Reading Discrete Inputs (Function Code 02)<a class="headerlink" href="#reading-discrete-inputs-function-code-02" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;libmodbus.hpp&quot;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">readDiscreteInputsExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ModbusRtuServer</span><span class="w"> </span><span class="n">server</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Set up discrete input data (normally from hardware)</span>
+<span class="w">    </span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">setDiscreteInput</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">setDiscreteInput</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">setDiscreteInput</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Read Discrete Inputs request: FC=02</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="mh">0x01</span><span class="p">,</span><span class="w">       </span><span class="c1">// Slave address</span>
+<span class="w">        </span><span class="mh">0x02</span><span class="p">,</span><span class="w">       </span><span class="c1">// Function code</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="c1">// Start address</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x03</span><span class="p">,</span><span class="w"> </span><span class="c1">// Quantity (3 inputs)</span>
+<span class="w">        </span><span class="mh">0x24</span><span class="p">,</span><span class="w"> </span><span class="mh">0x0A</span><span class="w">  </span><span class="c1">// CRC</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="reading-input-registers-function-code-04">
+<h3>Reading Input Registers (Function Code 04)<a class="headerlink" href="#reading-input-registers-function-code-04" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;libmodbus.hpp&quot;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">readInputRegistersExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ModbusRtuServer</span><span class="w"> </span><span class="n">server</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Set up input register data (normally from sensors)</span>
+<span class="w">    </span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">setInputRegister</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2500</span><span class="p">);</span><span class="w">  </span><span class="c1">// Temperature × 100</span>
+<span class="w">    </span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">setInputRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1013</span><span class="p">);</span><span class="w">  </span><span class="c1">// Pressure in mbar</span>
+
+<span class="w">    </span><span class="c1">// Read Input Registers request: FC=04</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="mh">0x01</span><span class="p">,</span><span class="w">       </span><span class="c1">// Slave address</span>
+<span class="w">        </span><span class="mh">0x04</span><span class="p">,</span><span class="w">       </span><span class="c1">// Function code</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="c1">// Start address</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w"> </span><span class="c1">// Quantity (2 registers)</span>
+<span class="w">        </span><span class="mh">0x71</span><span class="p">,</span><span class="w"> </span><span class="mh">0xCB</span><span class="w">  </span><span class="c1">// CRC</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="writing-data">
+<h2>✏️ <strong>Writing Data</strong><a class="headerlink" href="#writing-data" title="Link to this heading"></a></h2>
+<section id="writing-single-coil-function-code-05">
+<h3>Writing Single Coil (Function Code 05)<a class="headerlink" href="#writing-single-coil-function-code-05" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;libmodbus.hpp&quot;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">writeSingleCoilExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ModbusRtuServer</span><span class="w"> </span><span class="n">server</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Write Single Coil request: FC=05, Address=0, Value=ON</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="mh">0x01</span><span class="p">,</span><span class="w">       </span><span class="c1">// Slave address</span>
+<span class="w">        </span><span class="mh">0x05</span><span class="p">,</span><span class="w">       </span><span class="c1">// Function code</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="c1">// Coil address</span>
+<span class="w">        </span><span class="mh">0xFF</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="c1">// Value (0xFF00 = ON, 0x0000 = OFF)</span>
+<span class="w">        </span><span class="mh">0x8C</span><span class="p">,</span><span class="w"> </span><span class="mh">0x3A</span><span class="w">  </span><span class="c1">// CRC</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Response echoes the request for successful write</span>
+<span class="w">    </span><span class="c1">// Check that coil was actually set</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">coilValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">readCoil</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">coilValue</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="writing-single-register-function-code-06">
+<h3>Writing Single Register (Function Code 06)<a class="headerlink" href="#writing-single-register-function-code-06" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;libmodbus.hpp&quot;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">writeSingleRegisterExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ModbusRtuServer</span><span class="w"> </span><span class="n">server</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Write Single Register request: FC=06, Address=0, Value=0x1234</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="mh">0x01</span><span class="p">,</span><span class="w">       </span><span class="c1">// Slave address</span>
+<span class="w">        </span><span class="mh">0x06</span><span class="p">,</span><span class="w">       </span><span class="c1">// Function code</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="c1">// Register address</span>
+<span class="w">        </span><span class="mh">0x12</span><span class="p">,</span><span class="w"> </span><span class="mh">0x34</span><span class="p">,</span><span class="w"> </span><span class="c1">// Value to write</span>
+<span class="w">        </span><span class="mh">0x80</span><span class="p">,</span><span class="w"> </span><span class="mh">0x06</span><span class="w">  </span><span class="c1">// CRC</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Verify the write</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">regValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">readHoldingRegister</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">regValue</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x1234</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="writing-multiple-coils-function-code-15">
+<h3>Writing Multiple Coils (Function Code 15)<a class="headerlink" href="#writing-multiple-coils-function-code-15" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;libmodbus.hpp&quot;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">writeMultipleCoilsExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ModbusRtuServer</span><span class="w"> </span><span class="n">server</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Write Multiple Coils: Set 10 coils starting at address 0</span>
+<span class="w">    </span><span class="c1">// Pattern: ON, OFF, ON, OFF, ON, OFF, ON, OFF, ON, OFF</span>
+<span class="w">    </span><span class="c1">// Packed: 01010101 01000000 = 0x55, 0x02</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="mh">0x01</span><span class="p">,</span><span class="w">       </span><span class="c1">// Slave address</span>
+<span class="w">        </span><span class="mh">0x0F</span><span class="p">,</span><span class="w">       </span><span class="c1">// Function code (15)</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="c1">// Start address</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x0A</span><span class="p">,</span><span class="w"> </span><span class="c1">// Quantity (10 coils)</span>
+<span class="w">        </span><span class="mh">0x02</span><span class="p">,</span><span class="w">       </span><span class="c1">// Byte count (2 bytes)</span>
+<span class="w">        </span><span class="mh">0x55</span><span class="p">,</span><span class="w">       </span><span class="c1">// First 8 coils: 01010101</span>
+<span class="w">        </span><span class="mh">0x02</span><span class="p">,</span><span class="w">       </span><span class="c1">// Last 2 coils: 00000010 (only bits 0-1 used)</span>
+<span class="w">        </span><span class="mh">0x26</span><span class="p">,</span><span class="w"> </span><span class="mh">0x99</span><span class="w">  </span><span class="c1">// CRC</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Verify some coils were set correctly</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">readCoil</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">readCoil</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">readCoil</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">readCoil</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="writing-multiple-registers-function-code-16">
+<h3>Writing Multiple Registers (Function Code 16)<a class="headerlink" href="#writing-multiple-registers-function-code-16" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;libmodbus.hpp&quot;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">writeMultipleRegistersExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ModbusRtuServer</span><span class="w"> </span><span class="n">server</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Write Multiple Registers: Set 3 registers starting at address 0</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="mh">0x01</span><span class="p">,</span><span class="w">       </span><span class="c1">// Slave address</span>
+<span class="w">        </span><span class="mh">0x10</span><span class="p">,</span><span class="w">       </span><span class="c1">// Function code (16)</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="c1">// Start address</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x03</span><span class="p">,</span><span class="w"> </span><span class="c1">// Quantity (3 registers)</span>
+<span class="w">        </span><span class="mh">0x06</span><span class="p">,</span><span class="w">       </span><span class="c1">// Byte count (6 bytes = 3 registers × 2)</span>
+<span class="w">        </span><span class="mh">0x12</span><span class="p">,</span><span class="w"> </span><span class="mh">0x34</span><span class="p">,</span><span class="w"> </span><span class="c1">// Register 0 = 0x1234</span>
+<span class="w">        </span><span class="mh">0x56</span><span class="p">,</span><span class="w"> </span><span class="mh">0x78</span><span class="p">,</span><span class="w"> </span><span class="c1">// Register 1 = 0x5678</span>
+<span class="w">        </span><span class="mh">0x9A</span><span class="p">,</span><span class="w"> </span><span class="mh">0xBC</span><span class="p">,</span><span class="w"> </span><span class="c1">// Register 2 = 0x9ABC</span>
+<span class="w">        </span><span class="mh">0x57</span><span class="p">,</span><span class="w"> </span><span class="mh">0xC1</span><span class="w">  </span><span class="c1">// CRC</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Verify the writes</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">readHoldingRegister</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x1234</span><span class="p">);</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">readHoldingRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x5678</span><span class="p">);</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">server</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">readHoldingRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x9ABC</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="diagnostics">
+<h2>🔧 <strong>Diagnostics</strong><a class="headerlink" href="#diagnostics" title="Link to this heading"></a></h2>
+<section id="diagnostics-function-function-code-08">
+<h3>Diagnostics Function (Function Code 08)<a class="headerlink" href="#diagnostics-function-function-code-08" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;libmodbus.hpp&quot;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">diagnosticsExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ModbusRtuServer</span><span class="w"> </span><span class="n">server</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Return Query Data (Sub-function 00): Echo back test data</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="mh">0x01</span><span class="p">,</span><span class="w">       </span><span class="c1">// Slave address</span>
+<span class="w">        </span><span class="mh">0x08</span><span class="p">,</span><span class="w">       </span><span class="c1">// Function code (Diagnostics)</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="c1">// Sub-function (Return Query Data)</span>
+<span class="w">        </span><span class="mh">0x12</span><span class="p">,</span><span class="w"> </span><span class="mh">0x34</span><span class="p">,</span><span class="w"> </span><span class="c1">// Test data</span>
+<span class="w">        </span><span class="mh">0x81</span><span class="p">,</span><span class="w"> </span><span class="mh">0x80</span><span class="w">  </span><span class="c1">// CRC</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Response should echo back the same data</span>
+<span class="w">    </span><span class="c1">// Format: [01][08][00][00][12][34][CRC][CRC]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="error-handling">
+<h2>🚨 <strong>Error Handling</strong><a class="headerlink" href="#error-handling" title="Link to this heading"></a></h2>
+<section id="exception-response-example">
+<h3>Exception Response Example<a class="headerlink" href="#exception-response-example" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;libmodbus.hpp&quot;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">exceptionHandlingExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ModbusRtuServer</span><span class="w"> </span><span class="n">server</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Invalid function code request</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="mh">0x01</span><span class="p">,</span><span class="w">       </span><span class="c1">// Slave address</span>
+<span class="w">        </span><span class="mh">0x99</span><span class="p">,</span><span class="w">       </span><span class="c1">// Invalid function code</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="c1">// Some data</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span>
+<span class="w">        </span><span class="mh">0x84</span><span class="p">,</span><span class="w"> </span><span class="mh">0x0A</span><span class="w">  </span><span class="c1">// CRC (calculated for this frame)</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Response will be an exception:</span>
+<span class="w">    </span><span class="c1">// [01][99|0x80][01][CRC][CRC]</span>
+<span class="w">    </span><span class="c1">// Function code OR&#39;ed with 0x80, exception code 0x01 (Illegal Function)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">response</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">isException</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x80</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">isException</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">ModbusExceptionCode</span><span class="w"> </span><span class="n">exceptionCode</span><span class="w"> </span><span class="o">=</span>
+<span class="w">            </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">ModbusExceptionCode</span><span class="o">&gt;</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">exceptionCode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ModbusExceptionCode</span><span class="o">::</span><span class="n">ILLEGAL_FUNCTION</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="address-out-of-range-example">
+<h3>Address Out of Range Example<a class="headerlink" href="#address-out-of-range-example" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;libmodbus.hpp&quot;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">addressRangeExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ModbusRtuServer</span><span class="w"> </span><span class="n">server</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Try to read beyond valid address range</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="mh">0x01</span><span class="p">,</span><span class="w">       </span><span class="c1">// Slave address</span>
+<span class="w">        </span><span class="mh">0x03</span><span class="p">,</span><span class="w">       </span><span class="c1">// Function code (Read Holding Registers)</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x7D</span><span class="p">,</span><span class="w"> </span><span class="c1">// Start address (125 - at the limit)</span>
+<span class="w">        </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w"> </span><span class="c1">// Quantity (2 registers - goes beyond limit)</span>
+<span class="w">        </span><span class="mh">0x55</span><span class="p">,</span><span class="w"> </span><span class="mh">0xC6</span><span class="w">  </span><span class="c1">// CRC</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Should return exception 0x02 (Illegal Data Address)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">response</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ModbusExceptionCode</span><span class="w"> </span><span class="n">exceptionCode</span><span class="w"> </span><span class="o">=</span>
+<span class="w">            </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">ModbusExceptionCode</span><span class="o">&gt;</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">exceptionCode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ModbusExceptionCode</span><span class="o">::</span><span class="n">ILLEGAL_DATA_ADDRESS</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="real-world-integration">
+<h2>🔄 <strong>Real-World Integration</strong><a class="headerlink" href="#real-world-integration" title="Link to this heading"></a></h2>
+<section id="serial-port-integration-template">
+<h3>Serial Port Integration Template<a class="headerlink" href="#serial-port-integration-template" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;libmodbus.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SerialModbusServer</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">ModbusRtuServer</span><span class="w"> </span><span class="n">modbusServer</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Your serial port implementation here</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">processSerialData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Pseudocode for serial integration</span>
+<span class="w">        </span><span class="cm">/*</span>
+<span class="cm">        while (serialPort.isOpen()) {</span>
+<span class="cm">            // Read from serial port with appropriate timing</span>
+<span class="cm">            auto frameData = serialPort.readFrame();</span>
+
+<span class="cm">            if (!frameData.empty()) {</span>
+<span class="cm">                // Process with Modbus server</span>
+<span class="cm">                auto response = modbusServer.process(frameData);</span>
+
+<span class="cm">                if (!response.empty()) {</span>
+<span class="cm">                    // Send response back</span>
+<span class="cm">                    serialPort.write(response);</span>
+<span class="cm">                }</span>
+<span class="cm">            }</span>
+<span class="cm">        }</span>
+<span class="cm">        */</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Accessors for setting data from your application</span>
+<span class="w">    </span><span class="n">ModbusDataModel</span><span class="o">&amp;</span><span class="w"> </span><span class="n">getDataModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">modbusServer</span><span class="p">.</span><span class="n">data</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-data-model-limits">
+<h3>Custom Data Model Limits<a class="headerlink" href="#custom-data-model-limits" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;libmodbus.hpp&quot;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">customLimitsExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Create data model with custom limits for specialized application</span>
+<span class="w">    </span><span class="n">ModbusDataModel</span><span class="w"> </span><span class="n">customData</span><span class="p">(</span>
+<span class="w">        </span><span class="mi">100</span><span class="p">,</span><span class="w">   </span><span class="c1">// 100 discrete inputs</span>
+<span class="w">        </span><span class="mi">50</span><span class="p">,</span><span class="w">    </span><span class="c1">// 50 coils</span>
+<span class="w">        </span><span class="mi">200</span><span class="p">,</span><span class="w">   </span><span class="c1">// 200 input registers</span>
+<span class="w">        </span><span class="mi">150</span><span class="w">    </span><span class="c1">// 150 holding registers</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Use with server</span>
+<span class="w">    </span><span class="n">ModbusRtuServer</span><span class="w"> </span><span class="n">server</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Note: You would need to modify the server to accept custom data model</span>
+<span class="w">    </span><span class="c1">// This requires extending the current implementation</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="best-practices">
+<h2>💡 <strong>Best Practices</strong><a class="headerlink" href="#best-practices" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Frame Validation</strong>: Always validate CRC before processing frames</p></li>
+<li><p><strong>Address Bounds</strong>: Use the built-in address validation</p></li>
+<li><p><strong>Exception Handling</strong>: Properly handle and respond to exception conditions</p></li>
+<li><p><strong>Data Consistency</strong>: Ensure thread safety when accessing data from multiple contexts</p></li>
+<li><p><strong>Timing</strong>: Implement proper inter-frame timing for RTU protocol (3.5 character times)</p></li>
+</ol>
+</section>
+<section id="debugging-tips">
+<h2>🔍 <strong>Debugging Tips</strong><a class="headerlink" href="#debugging-tips" title="Link to this heading"></a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;libmodbus.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iomanip&gt;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">debugFrames</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">frame</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">label</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">frame</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">hex</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">setw</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">setfill</span><span class="p">(</span><span class="sc">&#39;0&#39;</span><span class="p">)</span>
+<span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">byte</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">dec</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">debugExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ModbusRtuServer</span><span class="w"> </span><span class="n">server</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">0x01</span><span class="p">,</span><span class="w"> </span><span class="mh">0x03</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w"> </span><span class="mh">0x84</span><span class="p">,</span><span class="w"> </span><span class="mh">0x0A</span><span class="p">};</span>
+<span class="w">    </span><span class="n">debugFrames</span><span class="p">(</span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Request&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="w">    </span><span class="n">debugFrames</span><span class="p">(</span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Response&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="testing.html" class="btn btn-neutral float-right" title="Testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Shishir Dey.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
