@@ -1,0 +1,12 @@
+[package]
+name = "libmodbus"
+version = "0.1.0"
+edition = "2021"
+description = "A safe, idiomatic Rust implementation of the Modbus protocol (RTU/TCP)"
+license = "MIT"
+keywords = ["modbus", "rtu", "tcp", "protocol", "industrial"]
+categories = ["embedded", "network-programming"]
+
+[dependencies]
+
+[dev-dependencies]

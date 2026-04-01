@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modbus Protocol Specification</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- SEO and Metadata -->
+    <meta name="author" content="Shishir Dey">
+    <meta name="description"
+        content="Comprehensive specification for the Modbus RTU and TCP protocols.">
+    <meta name="keywords"
+        content="Modbus, RTU, TCP, Protocol, Specification, Industrial Automation, SCADA, PLC, libmodbus, Open Source, Shishir Dey">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Modbus Protocol Specification">
+    <meta property="og:description" content="Technical documentation for the Modbus protocol variants.">
+    <meta property="og:type" content="article">
+    <meta property="article:author" content="Shishir Dey">
+    <meta name="theme-color" id="theme-color-meta" content="#f0ece4">
+    <script>
+        document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
+    </script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Modbus Protocol Specification",
+      "author": {
+        "@type": "Person",
+        "name": "Shishir Dey"
+      },
+      "description": "Comprehensive specification for the Modbus protocol, covering RTU and TCP.",
+      "keywords": "Modbus, Protocol, RTU, TCP, PLC, SCADA"
+    }
+    </script>
+    <style>
+        :root {
+            --glass-bg: #f5f3ef;
+            --glass-border: #d8d4cd;
+            --glass-highlight: #ece8e0;
+            --text-primary: #2f3437;
+            --text-secondary: #5f666d;
+            --accent: #2b5fb8;
+            --accent-glow: rgba(43, 95, 184, 0.18);
+            --success: #1f7a52;
+            --warning: #b07a1d;
+            --code-bg: #ece8e0;
+            --bg-base: #f0ece4;
+            --surface-shadow: 0 12px 36px rgba(48, 45, 41, 0.08);
+        }
+
+        [data-theme="dark"] {
+            --glass-bg: #26221d;
+            --glass-border: #3a342e;
+            --glass-highlight: #312c26;
+            --text-primary: #f0ebe3;
+            --text-secondary: #cbc2b5;
+            --accent: #8ab4ff;
+            --accent-glow: rgba(138, 180, 255, 0.2);
+            --code-bg: #1f1b17;
+            --bg-base: #161311;
+            --success: #7ecfa9;
+            --warning: #d2a558;
+            --surface-shadow: 0 16px 36px rgba(0, 0, 0, 0.32);
+        }
+
+        html {
+            background-color: var(--bg-base);
+            transition: background-color 0.3s ease;
+        }
+
+        body {
+            font-family: "Public Sans", "Avenir Next", "Segoe UI", sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.55;
+            font-size: 15.5px;
+            letter-spacing: -0.004em;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.4) 0%, transparent 42%),
+                radial-gradient(circle at 84% 80%, rgba(229, 223, 210, 0.55) 0%, transparent 38%),
+                repeating-linear-gradient(120deg, rgba(59, 53, 46, 0.03) 0, rgba(59, 53, 46, 0.03) 1px, transparent 1px, transparent 6px);
+            z-index: -1;
+        }
+
+        [data-theme="dark"] body::before {
+            background-image:
+                radial-gradient(circle at 12% 18%, rgba(66, 61, 55, 0.36) 0%, transparent 42%),
+                radial-gradient(circle at 84% 80%, rgba(50, 44, 39, 0.5) 0%, transparent 38%),
+                repeating-linear-gradient(120deg, rgba(235, 225, 210, 0.03) 0, rgba(235, 225, 210, 0.03) 1px, transparent 1px, transparent 6px);
+        }
+
+        .glass-container {
+            position: relative;
+            max-width: 920px;
+            margin: 48px auto;
+            padding: 44px;
+            background: var(--glass-bg);
+            border-radius: 22px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--surface-shadow);
+            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: var(--text-primary);
+            font-weight: 700;
+            letter-spacing: -0.015em;
+        }
+
+        h1 {
+            font-size: 2.45rem;
+            line-height: 1.2;
+            margin-bottom: 0.35em;
+        }
+
+        .version-chip {
+            font-size: 0.4em;
+            vertical-align: middle;
+            color: var(--text-secondary);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 4px 8px;
+            margin-left: 10px;
+            font-weight: 600;
+        }
+
+        .vendor-selector {
+            margin: 0 0 18px;
+            width: min(360px, 100%);
+            position: relative;
+        }
+
+        .vendor-selector::after {
+            content: "▾";
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            pointer-events: none;
+        }
+
+        .vendor-selector select {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 100%;
+            font-family: "Public Sans", "Avenir Next", "Segoe UI", sans-serif;
+            font-size: 0.96rem;
+            color: var(--text-primary);
+            background: var(--glass-highlight);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            padding: 11px 40px 11px 14px;
+            outline: none;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+        }
+
+        .vendor-selector select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+        }
+
+        .variant-content[hidden] {
+            display: none;
+        }
+
+        h2 {
+            font-size: 1.68rem;
+            margin-top: 1.8em;
+            margin-bottom: 0.95em;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 0.5em;
+            color: var(--text-primary);
+        }
+
+        h3 {
+            font-size: 1.24rem;
+            margin-top: 1.35em;
+            color: var(--text-primary);
+            opacity: 0.93;
+        }
+
+        p,
+        li {
+            color: var(--text-secondary);
+            font-size: 0.99rem;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 14px;
+            margin: 20px 0;
+            border: 1px solid var(--glass-border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--glass-highlight);
+        }
+
+        th,
+        td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+        }
+
+        th {
+            background: #e4dfd5;
+            color: var(--text-primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.045em;
+        }
+
+        [data-theme="dark"] th {
+            background: #322c25;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: rgba(127, 116, 103, 0.12);
+        }
+
+        /* Code Blocks */
+        pre {
+            background: var(--code-bg);
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            border: 1px solid var(--glass-border);
+            font-family: "JetBrains Mono", "SF Mono", "Menlo", "Monaco", "Courier New", monospace;
+            font-size: 0.86rem;
+            color: var(--text-primary);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        code {
+            font-family: "JetBrains Mono", "SF Mono", "Menlo", "Monaco", "Courier New", monospace;
+            background: var(--glass-highlight);
+            padding: 3px 6px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            color: var(--text-primary);
+        }
+
+        pre code {
+            background: transparent;
+            padding: 0;
+            color: inherit;
+        }
+
+        /* Mermaid Diagrams */
+        .mermaid {
+            background: var(--glass-highlight);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 30px 0;
+            overflow-x: auto;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+        }
+
+        [data-theme="dark"] .mermaid {
+            background: #2e2924;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--glass-border);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+
+        /* Top Controls */
+        .top-controls {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+            background: var(--glass-highlight);
+            padding: 6px 8px;
+            border-radius: 10px;
+            border: 1px solid var(--glass-border);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+        }
+
+        .github-link-wrapper {
+            display: flex;
+            align-items: center;
+            background: var(--glass-highlight);
+            padding: 6px 8px;
+            border-radius: 10px;
+            border: 1px solid var(--glass-border);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+        }
+
+        .theme-switch {
+            display: inline-block;
+            height: 28px;
+            position: relative;
+            width: 52px;
+        }
+
+        .theme-switch input {
+            display: none;
+        }
+
+        .slider {
+            background-color: rgba(108, 99, 90, 0.22);
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: 0.3s;
+            border-radius: 9px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .slider:before {
+            background-color: var(--glass-bg);
+            bottom: 2px;
+            content: "";
+            height: 22px;
+            left: 2px;
+            position: absolute;
+            transition: 0.3s;
+            width: 22px;
+            border-radius: 6px;
+            border: 1px solid var(--glass-border);
+        }
+
+        input:checked+.slider {
+            background-color: var(--accent-glow);
+            border-color: var(--accent);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(24px);
+        }
+
+        .theme-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0;
+            margin: 0 6px;
+            color: var(--text-secondary);
+            line-height: 1;
+        }
+
+        .icon {
+            font-size: 15px;
+            margin: 0;
+            color: var(--text-secondary);
+        }
+
+        .github-link-wrapper .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .github-link-wrapper .icon:hover {
+            background: rgba(108, 99, 90, 0.16);
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .github-link-wrapper .icon:hover {
+            background: rgba(240, 235, 227, 0.12);
+        }
+
+        @media (max-width: 900px) {
+            .glass-container {
+                margin: 30px 18px;
+                padding: 32px 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .glass-container {
+                margin: 18px 12px;
+                padding: 22px 16px 24px;
+                border-radius: 16px;
+            }
+
+            .top-controls {
+                position: static;
+                justify-content: flex-end;
+                margin-bottom: 14px;
+            }
+
+            h1 {
+                font-size: 1.86rem;
+                line-height: 1.24;
+                margin-bottom: 0.3em;
+            }
+
+            .version-chip {
+                display: inline-block;
+                margin-top: 8px;
+                margin-left: 0;
+                font-size: 0.46em;
+            }
+
+            .vendor-selector {
+                margin-bottom: 14px;
+                width: 100%;
+            }
+
+            h2 {
+                font-size: 1.36rem;
+            }
+
+            h3 {
+                font-size: 1.08rem;
+            }
+
+            p,
+            li {
+                font-size: 0.94rem;
+            }
+
+            th,
+            td {
+                padding: 11px;
+                font-size: 0.89rem;
+            }
+
+            pre {
+                padding: 14px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+    <!-- Mermaid Diagram Support -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+        const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default';
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: theme,
+            themeVariables: { fontFamily: 'Public Sans' }
+        });
+    </script>
+</head>
+
+<body>
+
+    <div class="glass-container">
+        <div class="top-controls">
+            <div class="theme-switch-wrapper">
+                <span class="theme-label">🌙</span>
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+                <span class="theme-label">☀️</span>
+            </div>
+            <div class="github-link-wrapper">
+                <a href="https://github.com/shishir-dey/libmodbus" target="_blank" class="icon" title="GitHub Repository">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <h1>Modbus Protocol Specification<span class="version-chip">v1.1b3</span>
+        </h1>
+
+        <div class="vendor-selector">
+            <select id="variant-selector" aria-label="Modbus variant selector">
+                <option value="rtu" selected>Modbus RTU</option>
+                <option value="tcp">Modbus TCP</option>
+            </select>
+        </div>
+
+        <div class="variant-content" data-variant="rtu">
+            <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 30px 0;">
+
+            <h2>Table of Contents</h2>
+            <ol>
+                <li><a href="#rtu-overview">Overview</a></li>
+                <li><a href="#rtu-data-model">Data Model</a></li>
+                <li><a href="#rtu-frame-structure">Frame Structure (RTU)</a></li>
+                <li><a href="#rtu-function-codes">Function Codes</a></li>
+                <li><a href="#rtu-crc16">CRC-16 Checksum</a></li>
+                <li><a href="#rtu-exceptions">Exception Responses</a></li>
+            </ol>
+
+            <h2 id="rtu-overview">1. Overview</h2>
+            <p>Modbus is an industrial communication protocol developed in 1979. It is a client/server architecture. <strong>Modbus RTU</strong> is the most common variant, typically used over RS-485 serial connections.</p>
+
+            <div class="mermaid">
+                sequenceDiagram
+                participant Client
+                participant Server
+
+                Client->>Server: Request Frame
+                Server-->>Client: Response Frame
+            </div>
+
+            <h2 id="rtu-data-model">2. Data Model</h2>
+            <p>The protocol defines four basic data types:</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data Type</th>
+                            <th>Object Type</th>
+                            <th>Access</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Coils</td>
+                            <td>Single bit</td>
+                            <td>Read/Write</td>
+                            <td>Discrete outputs, alters state of an ON/OFF device.</td>
+                        </tr>
+                        <tr>
+                            <td>Discrete Inputs</td>
+                            <td>Single bit</td>
+                            <td>Read-only</td>
+                            <td>Discrete inputs, provided by an I/O system.</td>
+                        </tr>
+                        <tr>
+                            <td>Input Registers</td>
+                            <td>16-bit word</td>
+                            <td>Read-only</td>
+                            <td>Analog inputs, provided by an I/O system.</td>
+                        </tr>
+                        <tr>
+                            <td>Holding Registers</td>
+                            <td>16-bit word</td>
+                            <td>Read/Write</td>
+                            <td>Configuration values, analog outputs.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 id="rtu-frame-structure">3. Frame Structure (RTU)</h2>
+            <p>The RTU Modbus frame consists of an Application Data Unit (ADU) which encapsulates a Protocol Data Unit (PDU).</p>
+            <pre>
+┌─────────┬──────────────┬──────────────┬─────────┐
+│ Address │ Function Code│     Data     │ CRC-16  │
+├─────────┼──────────────┼──────────────┼─────────┤
+│ 1 byte  │    1 byte    │  0-252 bytes │ 2 bytes │
+└─────────┴──────────────┴──────────────┴─────────┘
+  (ADU)      (PDU)          (PDU)        (ADU)</pre>
+
+            <h2 id="rtu-function-codes">4. Function Codes</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Function Code</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>01 (0x01)</td><td>Read Coils</td><td>Read from 1 to 2000 contiguous status of coils.</td></tr>
+                        <tr><td>02 (0x02)</td><td>Read Discrete Inputs</td><td>Read from 1 to 2000 contiguous status of discrete inputs.</td></tr>
+                        <tr><td>03 (0x03)</td><td>Read Holding Registers</td><td>Read the contents of a contiguous block of holding registers.</td></tr>
+                        <tr><td>04 (0x04)</td><td>Read Input Registers</td><td>Read from 1 to 125 contiguous input registers.</td></tr>
+                        <tr><td>05 (0x05)</td><td>Write Single Coil</td><td>Write a single output to either ON or OFF.</td></tr>
+                        <tr><td>06 (0x06)</td><td>Write Single Register</td><td>Write a single holding register.</td></tr>
+                        <tr><td>08 (0x08)</td><td>Diagnostics</td><td>Series of tests for checking the communication system.</td></tr>
+                        <tr><td>15 (0x0F)</td><td>Write Multiple Coils</td><td>Write a sequence of coils to either ON or OFF.</td></tr>
+                        <tr><td>16 (0x10)</td><td>Write Multiple Registers</td><td>Write a block of contiguous registers.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 id="rtu-crc16">5. CRC-16 Checksum</h2>
+            <p>The RTU format uses a CRC-16 polynomial <code>0xA001</code> for error detection. The CRC is appended to the message low byte first, then high byte.</p>
+            <pre>
+def calculate_crc16(data: bytes) -> int:
+    crc = 0xFFFF
+    for byte in data:
+        crc ^= byte
+        for _ in range(8):
+            if crc & 1:
+                crc = (crc >> 1) ^ 0xA001
+            else:
+                crc >>= 1
+    return crc</pre>
+
+            <h2 id="rtu-exceptions">6. Exception Responses</h2>
+            <p>When the server cannot process the request, it replies with an exception response. The function code in the response is the request function code + <code>0x80</code>.</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>01</td><td>ILLEGAL FUNCTION</td><td>The function code received in the query is not an allowable action for the server.</td></tr>
+                        <tr><td>02</td><td>ILLEGAL DATA ADDRESS</td><td>The data address received in the query is not an allowable address for the server.</td></tr>
+                        <tr><td>03</td><td>ILLEGAL DATA VALUE</td><td>A value contained in the query data field is not an allowable value for server.</td></tr>
+                        <tr><td>04</td><td>SLAVE DEVICE FAILURE</td><td>An unrecoverable error occurred while the server was attempting to perform the requested action.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="variant-content" data-variant="tcp" hidden>
+            <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 30px 0;">
+
+            <h2>Table of Contents</h2>
+            <ol>
+                <li><a href="#tcp-overview">Overview</a></li>
+                <li><a href="#tcp-data-model">Data Model</a></li>
+                <li><a href="#tcp-frame-structure">Frame Structure (TCP/MBAP)</a></li>
+                <li><a href="#tcp-function-codes">Function Codes</a></li>
+                <li><a href="#tcp-exceptions">Exception Responses</a></li>
+            </ol>
+
+            <h2 id="tcp-overview">1. Overview</h2>
+            <p><strong>Modbus TCP</strong> encapsulates Modbus PDU payloads into TCP packets. It operates over TCP port 502. The protocol replaces the slave address and CRC from the RTU frame with a specific header called MBAP (Modbus Application Protocol).</p>
+
+            <h2 id="tcp-data-model">2. Data Model</h2>
+            <p>The data model is identical to Modbus RTU (Coils, Discrete Inputs, Input Registers, Holding Registers).</p>
+
+            <h2 id="tcp-frame-structure">3. Frame Structure (TCP/MBAP)</h2>
+            <p>The MBAP header is 7 bytes long and precedes the standard Modbus PDU.</p>
+            <pre>
+┌──────────────┬────────────┬─────────┬─────────┬──────────────┬──────────────┐
+│Transaction ID│Protocol ID │ Length  │ Unit ID │ Function Code│     Data     │
+├──────────────┼────────────┼─────────┼─────────┼──────────────┼──────────────┤
+│   2 bytes    │  2 bytes   │ 2 bytes │ 1 byte  │    1 byte    │  0-252 bytes │
+└──────────────┴────────────┴─────────┴─────────┴──────────────┴──────────────┘
+                    MBAP Header                             PDU              </pre>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Size</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Transaction ID</td>
+                            <td>2 bytes</td>
+                            <td>Used for transaction pairing. The server copies the request transaction ID into the response.</td>
+                        </tr>
+                        <tr>
+                            <td>Protocol Identifier</td>
+                            <td>2 bytes</td>
+                            <td>0 = Modbus protocol.</td>
+                        </tr>
+                        <tr>
+                            <td>Length</td>
+                            <td>2 bytes</td>
+                            <td>Number of following bytes (Unit ID + PDU).</td>
+                        </tr>
+                        <tr>
+                            <td>Unit Identifier</td>
+                            <td>1 byte</td>
+                            <td>Slave address for routing purposes (e.g., Modbus TCP to RTU gateway). Typically 0xFF or 1 for direct IP connections.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 id="tcp-function-codes">4. Function Codes</h2>
+            <p>Function codes remain identical across RTU and TCP variants. Reference the RTU section for a list of common function codes.</p>
+
+            <h2 id="tcp-exceptions">5. Exception Responses</h2>
+            <p>Exception encoding is identical to RTU. The server returns the requested function code with the most significant bit set (+ <code>0x80</code>), followed by a 1-byte exception code.</p>
+        </div>
+
+    </div>
+
+    <script>
+        const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        toggleSwitch.checked = currentTheme === 'light';
+        const themeColorMeta = document.getElementById('theme-color-meta');
+        const variantSelector = document.getElementById('variant-selector');
+        const variantContentBlocks = document.querySelectorAll('.variant-content');
+
+        function syncThemeColor() {
+            if (!themeColorMeta) {
+                return;
+            }
+            const topBarColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-base').trim();
+            if (topBarColor) {
+                themeColorMeta.setAttribute('content', topBarColor);
+            }
+        }
+
+        function switchVariantContent(variant) {
+            variantContentBlocks.forEach((block) => {
+                block.hidden = block.dataset.variant !== variant;
+            });
+        }
+
+        if (variantSelector) {
+            switchVariantContent(variantSelector.value);
+            variantSelector.addEventListener('change', (event) => {
+                switchVariantContent(event.target.value);
+            });
+        }
+        syncThemeColor();
+
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            syncThemeColor();
+        }
+
+        toggleSwitch.addEventListener('change', switchTheme, false);
+    </script>
+</body>
+</html>
