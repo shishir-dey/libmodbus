@@ -20,8 +20,8 @@ use crate::server::ModbusServer;
 ///
 /// # Examples
 /// ```
-/// use libmodbus::server::rtu::RtuServer;
-/// use libmodbus::server::ModbusServer;
+/// use libmodbuzz::server::rtu::RtuServer;
+/// use libmodbuzz::server::ModbusServer;
 ///
 /// let mut server = RtuServer::new(1);
 /// server.data.write_coil(0, true);
