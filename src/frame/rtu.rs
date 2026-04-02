@@ -6,7 +6,7 @@
 //! # Frame Layout
 //! ```text
 //! Normal:    | Slave Addr (1) | Function Code (1) | Data (N) | CRC-16 (2) |
-//! Exception: | Slave Addr (1) | FC | 0x80 (1)     | ExCode (1) | CRC-16 (2) |
+//! Exception: | Slave Addr (1) | Exception Function Code (1) | Exception Code (1) | CRC-16 (2) |
 //! ```
 
 use crate::checksum;
@@ -43,7 +43,8 @@ pub struct RtuFrame {
 impl RtuFrame {
     /// Create a new RTU frame with the given slave address and PDU.
     ///
-    /// The checksum is set to 0 and will be calculated during [`serialize`](Self::serialize).
+    /// The checksum field is initialized to `0` and recalculated during
+    /// [`serialize`](Self::serialize).
     pub fn new(slave_address: u8, pdu: Pdu) -> Self {
         Self {
             slave_address,

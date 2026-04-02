@@ -1,7 +1,13 @@
-//! # libmodbuzz — Safe Modbus Protocol Implementation
+#![warn(missing_docs)]
+
+//! # libmodbuzz
 //!
 //! A safe, idiomatic Rust implementation of the Modbus protocol supporting
 //! RTU (serial) and TCP (Ethernet) transports.
+//!
+//! The crate exposes protocol enums, transport-independent PDUs, RTU and TCP
+//! frame codecs, an in-memory Modbus data model, and ready-to-use RTU/TCP
+//! server implementations.
 //!
 //! ## Quick Start
 //!
@@ -30,23 +36,30 @@
 //! - [`error`] — Unified error handling with [`ModbusError`]
 //! - [`checksum`] — CRC-16 (RTU) and LRC (ASCII) calculations
 //! - [`frame`] — Protocol Data Unit and transport-specific frame types
-//! - [`data_model`] — Four-zone data model (coils, inputs, registers)
+//! - [`data_model`] — Four-zone data model (coils, inputs, registers, all zero-based)
 //! - [`command`] — Function code dispatch and processing
-//! - [`server`] — Server trait and RTU implementation
+//! - [`server`] — Shared server trait with RTU and TCP implementations
 //!
 //! ## Supported Function Codes
 //!
-//! | Code | Name | Type |
-//! |------|------|------|
-//! | FC 01 | Read Coils | Read |
-//! | FC 02 | Read Discrete Inputs | Read |
-//! | FC 03 | Read Holding Registers | Read |
-//! | FC 04 | Read Input Registers | Read |
-//! | FC 05 | Write Single Coil | Write |
-//! | FC 06 | Write Single Register | Write |
-//! | FC 08 | Diagnostics | Diagnostic |
-//! | FC 15 | Write Multiple Coils | Write |
-//! | FC 16 | Write Multiple Registers | Write |
+//! | Code | Name | Status | Notes |
+//! |------|------|--------|-------|
+//! | FC 01 | Read Coils | Implemented | |
+//! | FC 02 | Read Discrete Inputs | Implemented | |
+//! | FC 03 | Read Holding Registers | Implemented | |
+//! | FC 04 | Read Input Registers | Implemented | |
+//! | FC 05 | Write Single Coil | Implemented | |
+//! | FC 06 | Write Single Register | Implemented | |
+//! | FC 07 | Read Exception Status | Defined only | Present in [`FunctionCode`], currently returns `IllegalFunction`. |
+//! | FC 08 | Diagnostics | Partially implemented | Supports a subset of [`DiagnosticsCode`] values. |
+//! | FC 15 | Write Multiple Coils | Implemented | |
+//! | FC 16 | Write Multiple Registers | Implemented | |
+//!
+//! ## Addressing
+//!
+//! Public APIs in this crate use zero-based addresses. If your device map is
+//! documented with Modbus reference numbers such as `00001` or `40001`, convert
+//! those to zero-based offsets before calling library functions.
 
 pub mod checksum;
 pub mod command;
@@ -58,6 +71,13 @@ pub mod server;
 
 // ── Public re-exports for ergonomic use ────────────────────────────────
 
+/// In-memory storage for coils, discrete inputs, and registers.
 pub use data_model::DataModel;
+/// Error type returned by frame parsing, command dispatch, and transport code.
 pub use error::ModbusError;
-pub use protocol::{DiagnosticsCode, ExceptionCode, FunctionCode};
+/// Diagnostic sub-function codes for Modbus function code 08.
+pub use protocol::DiagnosticsCode;
+/// Modbus exception codes used in exception responses.
+pub use protocol::ExceptionCode;
+/// Modbus function codes supported or recognized by the crate.
+pub use protocol::FunctionCode;

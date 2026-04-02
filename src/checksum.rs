@@ -4,6 +4,9 @@
 //! - **CRC-16** — used by Modbus RTU (polynomial 0xA001, init 0xFFFF)
 //! - **LRC** — Longitudinal Redundancy Check, used by Modbus ASCII
 //!
+//! The crate ships RTU and TCP transports today. [`lrc`] is included as a
+//! protocol utility for ASCII-compatible tooling and future transport support.
+//!
 //! # Examples
 //! ```
 //! use libmodbuzz::checksum;
@@ -48,7 +51,8 @@ pub fn crc16(data: &[u8]) -> u16 {
 /// Calculate LRC (Longitudinal Redundancy Check) for Modbus ASCII.
 ///
 /// Computes the LRC by summing all bytes and returning the two's complement
-/// of the result. This is used by the Modbus ASCII transport protocol.
+/// of the result. This is used by the Modbus ASCII transport protocol and by
+/// tooling that needs ASCII-compatible checksum generation.
 ///
 /// # Arguments
 /// * `data` — byte slice to compute the LRC over

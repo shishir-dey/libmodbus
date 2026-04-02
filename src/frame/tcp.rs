@@ -2,6 +2,8 @@
 //!
 //! TCP frames use the MBAP (Modbus Application Protocol) header followed by the
 //! PDU. No checksum is needed since TCP provides reliable delivery.
+//! Unlike RTU, TCP framing does not encode an explicit request/response role,
+//! so callers provide that context when interpreting parsed frames.
 //!
 //! # Frame Layout
 //! ```text
@@ -33,6 +35,9 @@ impl MbapHeader {
     pub const SIZE: usize = 7;
 
     /// Create a new MBAP header.
+    ///
+    /// `pdu_length` is the number of bytes in the wire-format PDU, excluding
+    /// the Unit ID byte but including the function code and payload.
     pub fn new(transaction_id: u16, unit_id: u8, pdu_length: u16) -> Self {
         Self {
             transaction_id,
@@ -151,6 +156,10 @@ impl TcpFrame {
     ///
     /// # Errors
     /// Returns [`ModbusError::InvalidFrame`] if the data is too short or malformed.
+    ///
+    /// Non-exception frames are returned with [`FrameType::Response`] because
+    /// the MBAP header does not distinguish requests from responses. Server-side
+    /// code should interpret the frame in the context in which it was received.
     pub fn deserialize(data: &[u8]) -> Result<Self> {
         let header = MbapHeader::deserialize(data)?;
 

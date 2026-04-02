@@ -15,7 +15,8 @@ use crate::server::ModbusServer;
 ///
 /// Unlike RTU, TCP frames use the MBAP header instead of CRC for framing.
 /// The `unit_id` field in the MBAP header serves the same purpose as the
-/// slave address in RTU.
+/// slave address in RTU. A server configured with unit ID `0` accepts requests
+/// for any incoming Unit ID and echoes that Unit ID back in the response.
 ///
 /// # Examples
 /// ```

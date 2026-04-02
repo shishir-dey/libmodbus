@@ -15,8 +15,8 @@ use crate::server::ModbusServer;
 
 /// Modbus RTU server with configurable slave address.
 ///
-/// Unlike the C++ implementation (which hardcodes address 1), this server
-/// supports any slave address via the builder pattern.
+/// This server can be instantiated for any RTU slave address. Address `0` is
+/// the Modbus broadcast address and therefore will never emit responses.
 ///
 /// # Examples
 /// ```
