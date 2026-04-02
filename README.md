@@ -6,9 +6,9 @@
 </picture>
 </div>
 
-<hr>
+[![Rust](https://github.com/shishir-dey/libmodbuzz/actions/workflows/rust.yml/badge.svg)](https://github.com/shishir-dey/libmodbuzz/actions/workflows/rust.yml) [![Publish docs](https://github.com/shishir-dey/libmodbuzz/actions/workflows/publish-docs.yml/badge.svg)](https://github.com/shishir-dey/libmodbuzz/actions/workflows/publish-docs.yml) [![Pages Build & Deployment](https://github.com/shishir-dey/libmodbuzz/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/shishir-dey/libmodbuzz/actions/workflows/pages/pages-build-deployment) [![Dependabot Updates](https://github.com/shishir-dey/libmodbuzz/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/shishir-dey/libmodbuzz/actions/workflows/dependabot/dependabot-updates)
 
-# libmodbuzz
+<hr>
 
 Safe, dependency-free Rust Modbus primitives and servers for RTU and TCP.
 
