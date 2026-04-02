@@ -1,9 +1,14 @@
 [package]
 name = "libmodbus"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 description = "A safe, idiomatic Rust implementation of the Modbus protocol (RTU/TCP)"
+authors = ["Shishir Dey <shishirdey241097@gmail.com>"]
 license = "MIT"
+repository = "https://github.com/shishir-dey/libmodbus"
+homepage = "https://shishir-dey.github.io/libmodbus/"
+documentation = "https://shishir-dey.github.io/libmodbus/"
+readme = "README.md"
 keywords = ["modbus", "rtu", "tcp", "protocol", "industrial"]
 categories = ["embedded", "network-programming"]
 
