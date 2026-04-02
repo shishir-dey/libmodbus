@@ -1,12 +1,6 @@
-//! Integration tests ported from C++ ModbusRtuServerTest.cpp.
-//!
-//! Each test uses the exact same hex byte sequences as the C++ tests to verify
-//! byte-for-byte protocol compatibility.
-
 use libmodbuzz::server::ModbusServer;
 use libmodbuzz::server::rtu::RtuServer;
 
-/// Helper: create a server with the same initial state as the C++ test fixture.
 fn setup_server() -> RtuServer {
     let mut server = RtuServer::new(1);
 
