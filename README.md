@@ -6,7 +6,24 @@
 </picture>
 </div>
 
-[![Rust](https://github.com/shishir-dey/libmodbuzz/actions/workflows/rust.yml/badge.svg)](https://github.com/shishir-dey/libmodbuzz/actions/workflows/rust.yml) [![Publish docs](https://github.com/shishir-dey/libmodbuzz/actions/workflows/publish-docs.yml/badge.svg)](https://github.com/shishir-dey/libmodbuzz/actions/workflows/publish-docs.yml) [![Pages Build & Deployment](https://github.com/shishir-dey/libmodbuzz/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/shishir-dey/libmodbuzz/actions/workflows/pages/pages-build-deployment) [![Dependabot Updates](https://github.com/shishir-dey/libmodbuzz/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/shishir-dey/libmodbuzz/actions/workflows/dependabot/dependabot-updates)
+<p align="center">
+    <a href="https://github.com/shishir-dey/libmodbuzz/blob/main/LICENSE">
+        <img src="https://img.shields.io/github/license/shishir-dey/libmodbuzz"
+            alt="License (MIT)" />
+    </a>&nbsp;
+    <a href="https://github.com/shishir-dey/libmodbuzz/actions/workflows/rust.yml">
+        <img src="https://img.shields.io/github/actions/workflow/status/shishir-dey/libmodbuzz/rust.yml?branch=main"
+            alt="CI Build Status" />
+    </a>&nbsp;
+    <a href="https://img.shields.io/github/commit-activity/m/shishir-dey/libmodbuzz">
+        <img src="https://img.shields.io/github/commit-activity/m/shishir-dey/libmodbuzz"
+            alt="Commit Activity" />
+    </a>&nbsp;
+    <a href="https://img.shields.io/github/last-commit/shishir-dey/libmodbuzz">
+        <img src="https://img.shields.io/github/last-commit/shishir-dey/libmodbuzz"
+            alt="Last Commit" />
+    </a>&nbsp;
+</p>
 
 <hr>
 

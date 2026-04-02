@@ -60,7 +60,6 @@ fn rtu_exception_round_trip() {
 
 #[test]
 fn rtu_known_crc_vectors() {
-    // Test against specific known CRC values from the C++ test suite
     let test_vectors: Vec<(&[u8], u16)> = vec![
         (&[0x01, 0x01, 0x00, 0x00, 0x00, 0x08], 0xCC3D),
         (&[0x01, 0x03, 0x00, 0x00, 0x00, 0x02], 0x0BC4),
