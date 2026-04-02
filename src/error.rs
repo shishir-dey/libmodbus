@@ -1,4 +1,4 @@
-//! Error types for the libmodbus crate.
+//! Error types for the libmodbuzz crate.
 //!
 //! Provides a unified error enum that covers protocol exceptions, frame parsing
 //! errors, checksum mismatches, and IO failures, enabling clean error propagation
@@ -15,7 +15,7 @@ use std::fmt;
 ///
 /// # Examples
 /// ```
-/// use libmodbus::ModbusError;
+/// use libmodbuzz::ModbusError;
 ///
 /// let err = ModbusError::InvalidFrame {
 ///     reason: "frame too short".into(),

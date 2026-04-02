@@ -3,8 +3,8 @@
 //! Each test uses the exact same hex byte sequences as the C++ tests to verify
 //! byte-for-byte protocol compatibility.
 
-use libmodbus::server::ModbusServer;
-use libmodbus::server::rtu::RtuServer;
+use libmodbuzz::server::ModbusServer;
+use libmodbuzz::server::rtu::RtuServer;
 
 /// Helper: create a server with the same initial state as the C++ test fixture.
 fn setup_server() -> RtuServer {
@@ -181,7 +181,7 @@ fn broadcast_address_no_response() {
     // but for address 0 with FC 01, the server should still not respond
     // Let's send a valid frame with address 0
     let data_without_crc = vec![0x00, 0x01, 0x00, 0x00, 0x00, 0x08];
-    let crc = libmodbus::checksum::crc16(&data_without_crc);
+    let crc = libmodbuzz::checksum::crc16(&data_without_crc);
     let mut request = data_without_crc;
     request.push((crc & 0xFF) as u8);
     request.push(((crc >> 8) & 0xFF) as u8);
@@ -193,7 +193,7 @@ fn read_coils_single_coil() {
     let mut server = setup_server();
     // Read 1 coil at address 0 (should be true)
     let data_without_crc = vec![0x01, 0x01, 0x00, 0x00, 0x00, 0x01];
-    let crc = libmodbus::checksum::crc16(&data_without_crc);
+    let crc = libmodbuzz::checksum::crc16(&data_without_crc);
     let mut request = data_without_crc;
     request.push((crc & 0xFF) as u8);
     request.push(((crc >> 8) & 0xFF) as u8);

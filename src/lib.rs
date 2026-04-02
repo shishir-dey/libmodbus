@@ -1,4 +1,4 @@
-//! # libmodbus — Safe Modbus Protocol Implementation
+//! # libmodbuzz — Safe Modbus Protocol Implementation
 //!
 //! A safe, idiomatic Rust implementation of the Modbus protocol supporting
 //! RTU (serial) and TCP (Ethernet) transports.
@@ -6,8 +6,8 @@
 //! ## Quick Start
 //!
 //! ```rust
-//! use libmodbus::server::rtu::RtuServer;
-//! use libmodbus::server::ModbusServer;
+//! use libmodbuzz::server::rtu::RtuServer;
+//! use libmodbuzz::server::ModbusServer;
 //!
 //! // Create an RTU server on slave address 1
 //! let mut server = RtuServer::new(1);

@@ -92,9 +92,9 @@ impl MbapHeader {
 ///
 /// # Examples
 /// ```
-/// use libmodbus::frame::tcp::TcpFrame;
-/// use libmodbus::frame::Pdu;
-/// use libmodbus::FunctionCode;
+/// use libmodbuzz::frame::tcp::TcpFrame;
+/// use libmodbuzz::frame::Pdu;
+/// use libmodbuzz::FunctionCode;
 ///
 /// let pdu = Pdu::new_request(
 ///     FunctionCode::ReadHoldingRegisters,

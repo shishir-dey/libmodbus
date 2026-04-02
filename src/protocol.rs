@@ -13,7 +13,7 @@ use crate::error::ModbusError;
 ///
 /// # Examples
 /// ```
-/// use libmodbus::FunctionCode;
+/// use libmodbuzz::FunctionCode;
 ///
 /// let code = FunctionCode::ReadCoils;
 /// assert_eq!(u8::from(code), 0x01);

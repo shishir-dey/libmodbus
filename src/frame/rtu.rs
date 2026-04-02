@@ -18,9 +18,9 @@ use crate::protocol::{ExceptionCode, FunctionCode};
 ///
 /// # Examples
 /// ```
-/// use libmodbus::frame::rtu::RtuFrame;
-/// use libmodbus::frame::{Pdu, FrameType};
-/// use libmodbus::FunctionCode;
+/// use libmodbuzz::frame::rtu::RtuFrame;
+/// use libmodbuzz::frame::{Pdu, FrameType};
+/// use libmodbuzz::FunctionCode;
 ///
 /// let pdu = Pdu::new_response(
 ///     FunctionCode::ReadCoils,

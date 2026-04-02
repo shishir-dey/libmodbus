@@ -11,7 +11,7 @@
 //!
 //! # Examples
 //! ```
-//! use libmodbus::DataModel;
+//! use libmodbuzz::DataModel;
 //!
 //! let mut model = DataModel::default();
 //! model.write_coil(0, true);
@@ -37,8 +37,8 @@ pub const DEFAULT_MAX_HOLDING_REGISTERS: usize = 125;
 ///
 /// # Examples
 /// ```
-/// use libmodbus::data_model::DataModelConfig;
-/// use libmodbus::DataModel;
+/// use libmodbuzz::data_model::DataModelConfig;
+/// use libmodbuzz::DataModel;
 ///
 /// let config = DataModelConfig {
 ///     max_coils: 4000,

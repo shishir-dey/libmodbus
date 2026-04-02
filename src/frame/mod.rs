@@ -32,8 +32,8 @@ pub enum FrameType {
 ///
 /// # Examples
 /// ```
-/// use libmodbus::frame::{Pdu, FrameType};
-/// use libmodbus::FunctionCode;
+/// use libmodbuzz::frame::{Pdu, FrameType};
+/// use libmodbuzz::FunctionCode;
 ///
 /// let pdu = Pdu::new_request(FunctionCode::ReadCoils, vec![0x00, 0x00, 0x00, 0x08]);
 /// assert_eq!(pdu.frame_type, FrameType::Request);

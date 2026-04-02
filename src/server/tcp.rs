@@ -19,8 +19,8 @@ use crate::server::ModbusServer;
 ///
 /// # Examples
 /// ```
-/// use libmodbus::server::tcp::TcpServer;
-/// use libmodbus::server::ModbusServer;
+/// use libmodbuzz::server::tcp::TcpServer;
+/// use libmodbuzz::server::ModbusServer;
 ///
 /// let mut server = TcpServer::new(1);
 /// server.data.write_holding_register(0, 0xCAFE);

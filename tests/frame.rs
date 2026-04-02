@@ -1,10 +1,10 @@
 //! Frame serialization/deserialization round-trip tests.
 
-use libmodbus::checksum;
-use libmodbus::frame::rtu::RtuFrame;
-use libmodbus::frame::tcp::TcpFrame;
-use libmodbus::frame::{FrameType, Pdu};
-use libmodbus::protocol::{ExceptionCode, FunctionCode};
+use libmodbuzz::checksum;
+use libmodbuzz::frame::rtu::RtuFrame;
+use libmodbuzz::frame::tcp::TcpFrame;
+use libmodbuzz::frame::{FrameType, Pdu};
+use libmodbuzz::protocol::{ExceptionCode, FunctionCode};
 
 // ── RTU Frame Tests ─────────────────────────────────────────────────────
 

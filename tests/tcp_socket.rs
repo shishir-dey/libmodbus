@@ -10,11 +10,11 @@ use std::sync::mpsc;
 use std::thread;
 use std::time::Duration;
 
-use libmodbus::frame::Pdu;
-use libmodbus::frame::tcp::{MbapHeader, TcpFrame};
-use libmodbus::protocol::FunctionCode;
-use libmodbus::server::ModbusServer;
-use libmodbus::server::tcp::TcpServer;
+use libmodbuzz::frame::Pdu;
+use libmodbuzz::frame::tcp::{MbapHeader, TcpFrame};
+use libmodbuzz::protocol::FunctionCode;
+use libmodbuzz::server::ModbusServer;
+use libmodbuzz::server::tcp::TcpServer;
 
 /// Build a Modbus TCP request frame from a transaction ID, unit ID, and PDU data.
 fn build_tcp_request(txn_id: u16, unit_id: u8, fc: FunctionCode, data: Vec<u8>) -> Vec<u8> {

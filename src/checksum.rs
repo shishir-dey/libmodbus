@@ -6,7 +6,7 @@
 //!
 //! # Examples
 //! ```
-//! use libmodbus::checksum;
+//! use libmodbuzz::checksum;
 //!
 //! // CRC-16 for a typical Modbus RTU request
 //! let data = [0x01, 0x01, 0x00, 0x00, 0x00, 0x08];
