@@ -10,11 +10,11 @@ use std::sync::mpsc;
 use std::thread;
 use std::time::Duration;
 
-use libmodbus::frame::tcp::{MbapHeader, TcpFrame};
 use libmodbus::frame::Pdu;
+use libmodbus::frame::tcp::{MbapHeader, TcpFrame};
 use libmodbus::protocol::FunctionCode;
-use libmodbus::server::tcp::TcpServer;
 use libmodbus::server::ModbusServer;
+use libmodbus::server::tcp::TcpServer;
 
 /// Build a Modbus TCP request frame from a transaction ID, unit ID, and PDU data.
 fn build_tcp_request(txn_id: u16, unit_id: u8, fc: FunctionCode, data: Vec<u8>) -> Vec<u8> {
@@ -411,7 +411,7 @@ fn tcp_read_discrete_inputs() {
 
     assert_eq!(response.pdu.function_code, FunctionCode::ReadDiscreteInputs);
     assert_eq!(response.pdu.data[0], 0x01); // byte count
-                                            // Bits: T,F,T,T = 1101 = 0x0D
+    // Bits: T,F,T,T = 1101 = 0x0D
     assert_eq!(response.pdu.data[1] & 0x0F, 0x0D);
 
     drop(client);

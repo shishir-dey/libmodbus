@@ -9,8 +9,8 @@
 
 use crate::command;
 use crate::data_model::DataModel;
-use crate::frame::rtu::RtuFrame;
 use crate::frame::FrameType;
+use crate::frame::rtu::RtuFrame;
 use crate::server::ModbusServer;
 
 /// Modbus RTU server with configurable slave address.

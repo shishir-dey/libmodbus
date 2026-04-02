@@ -2,6 +2,7 @@
 name = "libmodbus"
 version = "0.1.0"
 edition = "2024"
+autobenches = false
 description = "A safe, idiomatic Rust implementation of the Modbus protocol (RTU/TCP)"
 authors = ["Shishir Dey <shishirdey241097@gmail.com>"]
 license = "MIT"
@@ -15,3 +16,9 @@ categories = ["embedded", "network-programming"]
 [dependencies]
 
 [dev-dependencies]
+criterion = "0.5"
+
+[[bench]]
+name = "modbus_bench"
+path = "benches/modbus_bench.rs"
+harness = false
