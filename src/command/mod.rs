@@ -1,12 +1,12 @@
 //! Modbus command processing and dispatch.
 //!
-//! This module replaces the C++ Command pattern (virtual inheritance) with
-//! function-based dispatch via `match` on [`FunctionCode`]. Each function code
-//! maps to a dedicated handler function in the submodules.
+//! Each supported function code maps to a dedicated handler function in the
+//! submodules. The dispatcher validates protocol errors and converts them into
+//! Modbus exception PDUs.
 //!
 //! # Architecture
-//! Instead of `std::map<FunctionCode, unique_ptr<Command>>`, Rust uses a simple
-//! `match` expression — no heap allocation, no vtable, zero overhead.
+//! The dispatcher uses a `match` on [`FunctionCode`] rather than a heap-allocated
+//! command registry, keeping command routing explicit and allocation-free.
 
 pub mod diagnostics;
 pub mod read;

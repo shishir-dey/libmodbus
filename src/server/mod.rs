@@ -1,14 +1,14 @@
 //! Modbus server trait and implementations.
 //!
 //! Provides a common [`ModbusServer`] trait that abstracts over different
-//! transport protocols (RTU, TCP).
+//! transport protocols currently implemented by the crate: RTU and TCP.
 
 pub mod rtu;
 pub mod tcp;
 
 /// Trait for Modbus server implementations.
 ///
-/// Each transport protocol (RTU, TCP, ASCII) implements this trait to handle
+/// Each transport protocol (RTU or TCP) implements this trait to handle
 /// protocol-specific framing while sharing the same command processing logic.
 ///
 /// # Returns

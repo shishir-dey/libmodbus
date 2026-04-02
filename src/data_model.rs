@@ -8,6 +8,8 @@
 //!
 //! All addresses are 0-based internally. Bounds checking is performed on every
 //! access, returning `None` or silently ignoring out-of-range writes.
+//! If your application uses Modbus reference notation such as `00001` or
+//! `40001`, convert those values to zero-based offsets before using this API.
 //!
 //! # Examples
 //! ```
@@ -94,6 +96,8 @@ impl Default for DataModel {
 
 impl DataModel {
     /// Create a data model with custom configuration.
+    ///
+    /// All storage is allocated eagerly and initialized to `false` or `0`.
     pub fn with_config(config: DataModelConfig) -> Self {
         Self {
             discrete_inputs: vec![false; config.max_discrete_inputs],

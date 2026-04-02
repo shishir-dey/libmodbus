@@ -3,7 +3,7 @@
 version = 4
 
 [[package]]
-name = "libmodbuzzick"
+name = "aho-corasick"
 version = "1.1.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ddd31a130427c27518df266943a5308ed92d4b226cc639f5a8f1002816174301"
@@ -232,7 +232,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "48f5d2a454e16a5ea0f4ced81bd44e4cfc7bd3a507b61887c99fd3538b28e4af"
 
 [[package]]
-name = "libmodbus"
+name = "libmodbuzz"
 version = "0.1.0"
 dependencies = [
  "criterion",

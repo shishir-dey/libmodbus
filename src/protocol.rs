@@ -3,6 +3,11 @@
 //! Contains the fundamental Modbus protocol definitions including function codes,
 //! exception codes, and diagnostic sub-function codes as specified in the
 //! Modbus Application Protocol Specification V1.1b3.
+//!
+//! Some enums intentionally cover more of the Modbus specification than the
+//! current command dispatcher implements. When an enum variant is recognized but
+//! not yet handled by the server, the crate returns
+//! [`ExceptionCode::IllegalFunction`].
 
 use crate::error::ModbusError;
 
@@ -33,7 +38,10 @@ pub enum FunctionCode {
     WriteSingleCoil = 0x05,
     /// Write single register — FC 06
     WriteSingleRegister = 0x06,
-    /// Read exception status — FC 07
+    /// Read exception status — FC 07.
+    ///
+    /// This function code is defined for protocol completeness, but the current
+    /// command dispatcher does not implement it yet.
     ReadExceptionStatus = 0x07,
     /// Diagnostics — FC 08
     Diagnostics = 0x08,
@@ -129,6 +137,8 @@ impl TryFrom<u8> for ExceptionCode {
 ///
 /// The diagnostics function (FC 08) supports various sub-functions for testing
 /// communication and retrieving diagnostic information from Modbus devices.
+/// The current implementation handles a focused subset; unsupported codes
+/// return [`ModbusError::UnsupportedDiagnosticsCode`].
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(u16)]
 pub enum DiagnosticsCode {
