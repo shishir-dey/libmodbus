@@ -1,6 +1,6 @@
 [package]
 name = "libmodbuzz"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 autobenches = false
 description = "A safe, idiomatic Rust implementation of the Modbus protocol (RTU/TCP)"
