@@ -8,9 +8,18 @@
 
 <hr>
 
-A safe, idiomatic Rust implementation of the Modbus protocol supporting RTU and TCP transports. Zero `unsafe`, zero dependencies.
+# libmodbuzz
 
-## Usage
+Safe, dependency-free Rust Modbus primitives and servers for RTU and TCP.
+
+## Installation
+
+```toml
+[dependencies]
+libmodbuzz = { git = "https://github.com/shishir-dey/libmodbuzz" }
+```
+
+## Example
 
 ```rust
 use libmodbuzz::server::rtu::RtuServer;
@@ -20,6 +29,27 @@ let mut server = RtuServer::new(1);
 server.data.write_coil(0, true);
 server.data.write_holding_register(0, 0x1234);
 
-let request = vec![0x01, 0x03, 0x00, 0x00, 0x00, 0x01, 0x84, 0x0A];
+// FC 01 Read Coils, start=0, qty=8
+let request = vec![0x01, 0x01, 0x00, 0x00, 0x00, 0x08, 0x3D, 0xCC];
 let response = server.process(&request);
+assert!(response.is_some());
 ```
+
+## Included
+
+- `DataModel` for coils, discrete inputs, holding registers, and input registers
+- `frame::rtu::RtuFrame` and `frame::tcp::TcpFrame` for manual framing
+- `server::rtu::RtuServer` and `server::tcp::TcpServer`
+- `checksum::crc16` and `checksum::lrc`
+
+## Supported Function Codes
+
+Implemented: `01`, `02`, `03`, `04`, `05`, `06`, `15`, `16`  
+Partial: `08` Diagnostics  
+Defined but not implemented: `07`
+
+All public APIs use zero-based addresses.
+
+## License
+
+Licensed under the MIT license. See [`LICENSE`](LICENSE).
