@@ -3,8 +3,8 @@
 //! Each test uses the exact same hex byte sequences as the C++ tests to verify
 //! byte-for-byte protocol compatibility.
 
-use libmodbus::server::rtu::RtuServer;
 use libmodbus::server::ModbusServer;
+use libmodbus::server::rtu::RtuServer;
 
 /// Helper: create a server with the same initial state as the C++ test fixture.
 fn setup_server() -> RtuServer {
