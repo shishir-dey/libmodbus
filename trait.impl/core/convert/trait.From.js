@@ -1,0 +1,9 @@
+(function() {
+    const implementors = Object.fromEntries([["libmodbuzz",[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.95.0/core/convert/trait.From.html\" title=\"trait core::convert::From\">From</a>&lt;<a class=\"enum\" href=\"libmodbuzz/protocol/enum.DiagnosticsCode.html\" title=\"enum libmodbuzz::protocol::DiagnosticsCode\">DiagnosticsCode</a>&gt; for <a class=\"primitive\" href=\"https://doc.rust-lang.org/1.95.0/std/primitive.u16.html\">u16</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.95.0/core/convert/trait.From.html\" title=\"trait core::convert::From\">From</a>&lt;<a class=\"enum\" href=\"libmodbuzz/protocol/enum.ExceptionCode.html\" title=\"enum libmodbuzz::protocol::ExceptionCode\">ExceptionCode</a>&gt; for <a class=\"primitive\" href=\"https://doc.rust-lang.org/1.95.0/std/primitive.u8.html\">u8</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.95.0/core/convert/trait.From.html\" title=\"trait core::convert::From\">From</a>&lt;<a class=\"enum\" href=\"libmodbuzz/protocol/enum.FunctionCode.html\" title=\"enum libmodbuzz::protocol::FunctionCode\">FunctionCode</a>&gt; for <a class=\"primitive\" href=\"https://doc.rust-lang.org/1.95.0/std/primitive.u8.html\">u8</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.95.0/core/convert/trait.From.html\" title=\"trait core::convert::From\">From</a>&lt;<a class=\"struct\" href=\"https://doc.rust-lang.org/1.95.0/std/io/error/struct.Error.html\" title=\"struct std::io::error::Error\">Error</a>&gt; for <a class=\"enum\" href=\"libmodbuzz/error/enum.ModbusError.html\" title=\"enum libmodbuzz::error::ModbusError\">ModbusError</a>",0]]]]);
+    if (window.register_implementors) {
+        window.register_implementors(implementors);
+    } else {
+        window.pending_implementors = implementors;
+    }
+})()
+//{"start":59,"fragment_lengths":[1621]}

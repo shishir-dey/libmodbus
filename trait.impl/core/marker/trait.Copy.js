@@ -1,0 +1,9 @@
+(function() {
+    const implementors = Object.fromEntries([["libmodbuzz",[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.95.0/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"libmodbuzz/frame/enum.FrameType.html\" title=\"enum libmodbuzz::frame::FrameType\">FrameType</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.95.0/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"libmodbuzz/protocol/enum.DiagnosticsCode.html\" title=\"enum libmodbuzz::protocol::DiagnosticsCode\">DiagnosticsCode</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.95.0/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"libmodbuzz/protocol/enum.ExceptionCode.html\" title=\"enum libmodbuzz::protocol::ExceptionCode\">ExceptionCode</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.95.0/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"libmodbuzz/protocol/enum.FunctionCode.html\" title=\"enum libmodbuzz::protocol::FunctionCode\">FunctionCode</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.95.0/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"libmodbuzz/frame/tcp/struct.MbapHeader.html\" title=\"struct libmodbuzz::frame::tcp::MbapHeader\">MbapHeader</a>",0]]]]);
+    if (window.register_implementors) {
+        window.register_implementors(implementors);
+    } else {
+        window.pending_implementors = implementors;
+    }
+})()
+//{"start":59,"fragment_lengths":[1441]}

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["read_coils","read_discrete_inputs","read_holding_registers","read_input_registers"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["write_single_coil","write_single_register"]};
